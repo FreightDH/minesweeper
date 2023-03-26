@@ -100,13 +100,19 @@ body.lock {
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-  /*
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  > main {
-  	flex: 1 1 auto;
-  } 
-  */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper > main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .header {
@@ -139,6 +145,7 @@ body.lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .header__title {
@@ -257,44 +264,6 @@ body.lock {
 			&.active {
 				left: 0;
 			}	
-		}
-	}
-}
-*/
-
-/* 
-.header-menu-list {
-	&__link {
-		display: block;
-		position: relative;
-		margin: 0px 0px 0px 24px;
-
-		font-weight: 500;
-		font-size: 24px;
-		color: #fff;
-
-		span {
-			position: relative;
-			line-height: 28px;
-
-			&::after {
-				content: '';
-				position: absolute;
-				left: 50%;
-				bottom: 0;
-				width: 0;
-				height: 2px;
-				background-color: #fff;
-				@include anim(0.3s, 0s);
-			}
-		}
-		&:hover {
-			color: #fff;
-
-			span::after {
-				left: 0;
-				width: 100%;
-			}
 		}
 	}
 }
@@ -434,15 +403,33 @@ body.lock {
 }
 
 .pets__arrow {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #F1CDB3;
   border-radius: 50%;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  cursor: pointer;
 }
 
-.pets__arrow:hover {
+.pets__arrow:not([class*=disabled]):hover {
+  cursor: pointer;
   background-color: #F1CDB3;
+}
+
+.pets__arrow.arrow--r {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .pets__column {
@@ -675,6 +662,10 @@ body.lock {
   padding: 40px 0;
 }
 
+.footer__item.item--padding {
+  padding: 35px 0;
+}
+
 .footer__text {
   max-width: 260px;
   margin: 0px 0px 0px 20px;
@@ -686,6 +677,101 @@ body.lock {
 
 .footer__text:hover {
   text-decoration: underline;
+}
+
+.header--pets {
+  padding: 30px 0;
+}
+
+.title--pets {
+  color: #545454;
+}
+
+.subtitle--pets {
+  color: #292929;
+}
+
+.item--pets {
+  color: #545454;
+}
+
+.item--pets:hover,
+.item--pets.active {
+  color: #292929;
+}
+
+.container--pets {
+  max-width: 1240px;
+}
+
+.content--pets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -20px;
+}
+
+.column--pets {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+  padding: 0 20px;
+}
+
+.column--pets:nth-child(1),
+.column--pets:nth-child(2),
+.column--pets:nth-child(3),
+.column--pets:nth-child(4) {
+  margin: 0px 0px 30px 0px;
+}
+
+.pets__pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 0px 0px 0px;
+  margin: 0 -10px;
+}
+
+.pets__arrow.disabled {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-color: #CDCDCD;
+}
+
+.pets__current {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #F1CDB3;
+  border: 2px solid #F1CDB3;
+  border-radius: 50%;
+  color: #292929;
+  font-size: 1.25rem;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+}
+
+.pagination__column {
+  padding: 0 10px;
 }
 
 .btn {
