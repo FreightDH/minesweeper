@@ -177,6 +177,9 @@ body.lock {
   color: #CDCDCD;
   font-size: 0.9375rem;
   line-height: 160%;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .menu__item:active span,
@@ -611,6 +614,15 @@ body.lock {
   line-height: 2.5rem;
   letter-spacing: 0.06em;
   background: url("../img/donation/card.svg") 15px 10px no-repeat #F1CDB3;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.donation__card:hover {
+  -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .donation__text {
