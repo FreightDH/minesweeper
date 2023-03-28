@@ -158,6 +158,7 @@ body.lock {
 
 .header__subtitle {
   color: #FFF;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 0.8125rem;
   line-height: 0.9375rem;
   letter-spacing: 0.1em;
@@ -175,6 +176,7 @@ body.lock {
   padding: 0 17.5px;
   position: relative;
   color: #CDCDCD;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 0.9375rem;
   line-height: 160%;
   -webkit-transition: all 0.3s ease 0s;
@@ -302,6 +304,7 @@ body.lock {
   max-width: 460px;
   padding: 42px 0;
   color: #CDCDCD;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 0.9375rem;
   line-height: 160%;
 }
