@@ -90,7 +90,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body.lock {
+.lock body {
   overflow: hidden;
   -ms-touch-action: none;
       touch-action: none;
@@ -164,56 +164,60 @@ body.lock {
   letter-spacing: 0.1em;
 }
 
-.header-menu__icon {
+.menu__icon {
   display: none;
   position: absolute;
   top: 49px;
   right: 20px;
-  width: 30px;
-  height: 22px;
+  width: 1.875rem;
+  height: 1.375rem;
   cursor: pointer;
   z-index: 5;
 }
 
-.header-menu__icon span {
+.menu__icon span {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  position: absolute;
   top: 10px;
   left: 0;
-  position: absolute;
   width: 100%;
   height: 2px;
   background-color: #F1CDB3;
 }
 
-.header-menu__icon span:first-child {
+.menu__icon span:first-child {
   top: 0px;
 }
 
-.header-menu__icon span:last-child {
+.menu__icon span:last-child {
   top: auto;
   bottom: 0px;
 }
 
-.header-menu__icon.active span {
-  -webkit-transform: scale(0);
-      -ms-transform: scale(0);
-          transform: scale(0);
+.menu-open .menu__icon span {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+  top: 10px;
+  left: -2px;
 }
 
-.header-menu__icon.active span:first-child {
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  top: 8px;
+.menu-open .menu__icon span:first-child {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+  top: 10px;
+  left: -12px;
 }
 
-.header-menu__icon.active span:last-child {
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  bottom: 8px;
+.menu-open .menu__icon span:last-child {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+  top: 10px;
+  left: 8px;
 }
 
 .menu__list {
@@ -1161,6 +1165,10 @@ body.lock {
   color: #292929;
 }
 
+.icon--pets span {
+  background-color: #000;
+}
+
 .item--pets {
   color: #545454;
 }
@@ -1687,27 +1695,51 @@ body.lock {
     padding: 0 20px;
   }
 
-  .header-menu__icon {
+  .menu__icon {
     display: block;
   }
 
-  .header-menu__menu {
+  .menu__body {
     position: fixed;
-    width: 100%;
+    width: 320px;
     height: 100%;
     top: 0;
-    left: -110%;
-    background-color: #007765;
+    right: -110%;
+    background-color: #292929;
     z-index: 2;
-    padding: 50px 10px 20px 10px;
+    padding: 250px 10px 20px 10px;
     overflow: auto;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
   }
 
-  .header-menu__menu.active {
-    left: 0;
+  .menu__body.menu-open {
+    right: 0;
+  }
+
+  .menu__list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .menu__item {
+    color: #CDCDCD;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 160%;
+  }
+
+  .menu__item:not(:last-child) {
+    margin-bottom: 40px;
   }
 
   .about__title {
@@ -1874,6 +1906,10 @@ body.lock {
   .footer__item.item--padding {
     padding: 40px 0;
   }
+
+  .body--pets {
+    background-color: #F6F6F6;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -1993,6 +2029,12 @@ body.lock {
 
   .donation__text {
     max-width: 280px;
+  }
+}
+
+@media (max-width: 374px) {
+  .menu__body.menu-open {
+    right: 0px;
   }
 }
 
