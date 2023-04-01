@@ -1625,6 +1625,11 @@ html {
       padding-top: calc(0.0000000625rem + 4.0624999375 * (100vw - 20rem) / 28.0625);
     }
 }
+
+  .column--pets:nth-child(7),
+  .column--pets:nth-child(8) {
+    display: none;
+  }
 }
 
 @media (max-width: 48em) {
@@ -1683,11 +1688,6 @@ html {
       margin-bottom: calc(2.625rem + 1.125 * (100vw - 20rem) / 28.0625);
     }
 }
-
-  .column--pets:nth-child(7),
-  .column--pets:nth-child(8) {
-    display: none;
-  }
 }
 
 @media (max-width: 767px) {
@@ -1910,6 +1910,92 @@ html {
   .body--pets {
     background-color: #F6F6F6;
   }
+
+  .content--pets {
+    padding-bottom: 20px;
+  }
+
+@supports (padding-top: clamp( 1.875rem , 3.1607382026rem  +  -2.678691013vw , 2.625rem )) {
+    .content--pets {
+      padding-top: clamp( 1.875rem , 3.1607382026rem  +  -2.678691013vw , 2.625rem );
+    }
+}
+
+@supports not (padding-top: clamp( 1.875rem , 3.1607382026rem  +  -2.678691013vw , 2.625rem )) {
+    .content--pets {
+      padding-top: calc(2.625rem + -0.75 * (100vw - 20rem) / 27.99875);
+    }
+}
+
+  .column--pets:nth-child(4),
+  .column--pets:nth-child(5),
+  .column--pets:nth-child(6) {
+    display: none;
+  }
+
+@supports (padding-bottom: clamp( 2.625rem , 1.1517199429rem  +  7.3664002857vw , 4.6875rem )) {
+    .pets--pets {
+      padding-bottom: clamp( 2.625rem , 1.1517199429rem  +  7.3664002857vw , 4.6875rem );
+    }
+}
+
+@supports not (padding-bottom: clamp( 2.625rem , 1.1517199429rem  +  7.3664002857vw , 4.6875rem )) {
+    .pets--pets {
+      padding-bottom: calc(2.625rem + 2.0625 * (100vw - 20rem) / 27.99875);
+    }
+}
+
+@supports (margin-left: clamp( -0.625rem , -0.0892757489rem  +  -1.1161212554vw , -0.3125rem )) {
+    .pets__pagination {
+      margin-left: clamp( -0.625rem , -0.0892757489rem  +  -1.1161212554vw , -0.3125rem );
+    }
+}
+
+@supports not (margin-left: clamp( -0.625rem , -0.0892757489rem  +  -1.1161212554vw , -0.3125rem )) {
+    .pets__pagination {
+      margin-left: calc(-0.3125rem + -0.3125 * (100vw - 20rem) / 27.99875);
+    }
+}
+
+@supports (margin-right: clamp( -0.625rem , -0.0892757489rem  +  -1.1161212554vw , -0.3125rem )) {
+    .pets__pagination {
+      margin-right: clamp( -0.625rem , -0.0892757489rem  +  -1.1161212554vw , -0.3125rem );
+    }
+}
+
+@supports not (margin-right: clamp( -0.625rem , -0.0892757489rem  +  -1.1161212554vw , -0.3125rem )) {
+    .pets__pagination {
+      margin-right: calc(-0.3125rem + -0.3125 * (100vw - 20rem) / 27.99875);
+    }
+}
+
+  .pets__pagination {
+    padding: 0px 0px 0px 0px;
+  }
+
+@supports (padding-left: clamp( 0.3125rem , 0.0892757489rem  +  1.1161212554vw , 0.625rem )) {
+    .pagination__column {
+      padding-left: clamp( 0.3125rem , 0.0892757489rem  +  1.1161212554vw , 0.625rem );
+    }
+}
+
+@supports not (padding-left: clamp( 0.3125rem , 0.0892757489rem  +  1.1161212554vw , 0.625rem )) {
+    .pagination__column {
+      padding-left: calc(0.3125rem + 0.3125 * (100vw - 20rem) / 27.99875);
+    }
+}
+
+@supports (padding-right: clamp( 0.3125rem , 0.0892757489rem  +  1.1161212554vw , 0.625rem )) {
+    .pagination__column {
+      padding-right: clamp( 0.3125rem , 0.0892757489rem  +  1.1161212554vw , 0.625rem );
+    }
+}
+
+@supports not (padding-right: clamp( 0.3125rem , 0.0892757489rem  +  1.1161212554vw , 0.625rem )) {
+    .pagination__column {
+      padding-right: calc(0.3125rem + 0.3125 * (100vw - 20rem) / 27.99875);
+    }
+}
 }
 
 @media (max-width: 767.98px) {
@@ -1968,7 +2054,7 @@ html {
             order: 2;
   }
 
-  .pets__arrow.arrow--r {
+  .pets__arrow.arrow--r--main {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
             order: 3;
@@ -2142,6 +2228,30 @@ html {
   }
 
   .pets__column {
+    padding-right: inherit;
+  }
+
+  .content--pets {
+    padding-top: inherit;
+  }
+
+  .pets--pets {
+    padding-bottom: inherit;
+  }
+
+  .pets__pagination {
+    margin-left: inherit;
+  }
+
+  .pets__pagination {
+    margin-right: inherit;
+  }
+
+  .pagination__column {
+    padding-left: inherit;
+  }
+
+  .pagination__column {
     padding-right: inherit;
   }
 }
