@@ -1600,10 +1600,6 @@ html {
     padding: 30px 0px 0px 0px;
   }
 
-  .content--pets {
-    padding-bottom: 42px;
-  }
-
 @supports (padding-top: clamp( 1.875rem , 3.1607382026rem  +  -2.678691013vw , 2.625rem )) {
     .content--pets {
       padding-top: clamp( 1.875rem , 3.1607382026rem  +  -2.678691013vw , 2.625rem );
@@ -1613,6 +1609,18 @@ html {
 @supports not (padding-top: clamp( 1.875rem , 3.1607382026rem  +  -2.678691013vw , 2.625rem )) {
     .content--pets {
       padding-top: calc(2.625rem + -0.75 * (100vw - 20rem) / 27.99875);
+    }
+}
+
+@supports (padding-bottom: clamp( 1.25rem , 0.2678132952rem  +  4.9109335238vw , 2.625rem )) {
+    .content--pets {
+      padding-bottom: clamp( 1.25rem , 0.2678132952rem  +  4.9109335238vw , 2.625rem );
+    }
+}
+
+@supports not (padding-bottom: clamp( 1.25rem , 0.2678132952rem  +  4.9109335238vw , 2.625rem )) {
+    .content--pets {
+      padding-bottom: calc(1.25rem + 1.375 * (100vw - 20rem) / 27.99875);
     }
 }
 
