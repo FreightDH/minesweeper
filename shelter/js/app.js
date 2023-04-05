@@ -57,11 +57,19 @@
                 bodyLockToggle();
                 document.documentElement.classList.toggle("menu-open");
                 document.querySelector(".menu__body").classList.toggle("menu-open");
+                document.querySelector(".blackout").classList.toggle("active");
             }
             if (bodyLockStatus && e.target.closest(".menu__link")) {
                 bodyUnlock();
                 document.documentElement.classList.remove("menu-open");
                 document.querySelector(".menu__body").classList.remove("menu-open");
+                document.querySelector(".blackout").classList.remove("active");
+            }
+            if (bodyLockStatus && !e.target.closest(".menu__body")) {
+                bodyUnlock();
+                document.documentElement.classList.remove("menu-open");
+                document.querySelector(".menu__body").classList.remove("menu-open");
+                document.querySelector(".blackout").classList.remove("active");
             }
         }));
     }
