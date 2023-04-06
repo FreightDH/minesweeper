@@ -14,10 +14,10 @@
         }));
     }
     let bodyLockStatus = true;
-    let bodyLockToggle = (delay = 500) => {
+    let bodyLockToggle = (delay = 300) => {
         if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
     };
-    let bodyUnlock = (delay = 500) => {
+    let bodyUnlock = (delay = 300) => {
         let body = document.querySelector("body");
         if (bodyLockStatus) {
             let lock_padding = document.querySelectorAll("[data-lp]");
@@ -35,7 +35,7 @@
             }), delay);
         }
     };
-    let bodyLock = (delay = 500) => {
+    let bodyLock = (delay = 300) => {
         let body = document.querySelector("body");
         if (bodyLockStatus) {
             let lock_padding = document.querySelectorAll("[data-lp]");
@@ -72,6 +72,33 @@
                 document.querySelector(".blackout").classList.remove("active");
             }
         }));
+    }
+    const popupLinks = document.querySelectorAll(".popup-link");
+    const closeIcon = document.querySelector(".popup__close");
+    if (popupLinks.length > 0) popupLinks.forEach((link => {
+        link.addEventListener("click", (function(event) {
+            const popup = document.querySelector(".popup");
+            popupOpen(popup);
+            event.preventDefault();
+        }));
+    }));
+    if (closeIcon) closeIcon.addEventListener("click", (function(event) {
+        popupClose(event.target.closest(".popup"));
+    }));
+    function popupOpen(popup) {
+        if (popup && bodyLockStatus) {
+            bodyLock();
+            popup.classList.add("popup-open");
+            popup.addEventListener("click", (function(event) {
+                if (!event.target.closest(".popup__content")) popupClose(event.target.closest(".popup"));
+            }));
+        }
+    }
+    function popupClose(popup) {
+        if (bodyLockStatus) {
+            bodyUnlock();
+            popup.classList.remove("popup-open");
+        }
     }
     isWebp();
     menuInit();
