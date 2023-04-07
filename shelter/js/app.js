@@ -75,9 +75,16 @@
     }
     const popupLinks = document.querySelectorAll(".popup-link");
     const closeIcon = document.querySelector(".popup__close");
+    const popupImage = document.querySelector(".popup__image");
+    const popupTitle = document.querySelector(".popup__title");
+    const popupSubtitle = document.querySelector(".popup__subtitle");
+    const popupText = document.querySelector(".popup__text");
+    const popupList = document.querySelectorAll(".popup__list--item");
     if (popupLinks.length > 0) popupLinks.forEach((link => {
         link.addEventListener("click", (function(event) {
             const popup = document.querySelector(".popup");
+            const petName = link.children[1].textContent;
+            popupFill(popup, petName);
             popupOpen(popup);
             event.preventDefault();
         }));
@@ -99,6 +106,22 @@
             bodyUnlock();
             popup.classList.remove("popup-open");
         }
+    }
+    async function popupFill(popup, petName) {
+        const file = "files/pets.json";
+        const result = await fetch(file);
+        const petsInfo = await result.json();
+        const length = petsInfo.length;
+        let infoIndex;
+        for (infoIndex = 0; infoIndex < length; infoIndex++) if (petsInfo[infoIndex]["name"] === petName) break;
+        popupImage.firstChild.setAttribute("src", petsInfo[infoIndex]["img"]);
+        popupTitle.textContent = petsInfo[infoIndex]["name"];
+        popupSubtitle.textContent = petsInfo[infoIndex]["type"] + " - " + petsInfo[infoIndex]["breed"];
+        popupText.textContent = petsInfo[infoIndex]["description"];
+        popupList[0].lastChild.textContent = petsInfo[infoIndex]["age"];
+        popupList[1].lastChild.textContent = petsInfo[infoIndex]["inoculations"].join(", ");
+        popupList[2].lastChild.textContent = petsInfo[infoIndex]["diseases"].join(", ");
+        popupList[3].lastChild.textContent = petsInfo[infoIndex]["parasites"].join(", ");
     }
     isWebp();
     menuInit();

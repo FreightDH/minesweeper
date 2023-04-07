@@ -1484,7 +1484,7 @@ html {
   height: 500px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 9px;
+  border-radius: 9px 0px 0px 9px;
 }
 
 @supports (width: clamp( 21.875rem , 7.8581871345rem  +  29.2397660819vw , 31.25rem )) {
@@ -1948,6 +1948,10 @@ html {
     }
 }
 
+  .popup__content {
+    height: auto;
+  }
+
 @supports (width: clamp( 15rem , -2.4114915844rem  +  87.0574579222vw , 39.375rem )) {
     .popup__content {
       width: clamp( 15rem , -2.4114915844rem  +  87.0574579222vw , 39.375rem );
@@ -1957,18 +1961,6 @@ html {
 @supports not (width: clamp( 15rem , -2.4114915844rem  +  87.0574579222vw , 39.375rem )) {
     .popup__content {
       width: calc(15rem + 24.375 * (100vw - 20rem) / 27.99875);
-    }
-}
-
-@supports (height: clamp( 21.25rem , 20.8035514978rem  +  2.2322425108vw , 21.875rem )) {
-    .popup__content {
-      height: clamp( 21.25rem , 20.8035514978rem  +  2.2322425108vw , 21.875rem );
-    }
-}
-
-@supports not (height: clamp( 21.25rem , 20.8035514978rem  +  2.2322425108vw , 21.875rem )) {
-    .popup__content {
-      height: calc(21.25rem + 0.625 * (100vw - 20rem) / 27.99875);
     }
 }
 
@@ -2268,7 +2260,7 @@ html {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
-    padding: 10px;
+    padding: 20px;
   }
 
   .popup__column:not(:last-child) {
@@ -2353,6 +2345,10 @@ html {
 
   .donation__text {
     max-width: 280px;
+  }
+
+  .popup__column:last-child {
+    padding: 10px;
   }
 
   .popup__title {
