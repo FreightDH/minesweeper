@@ -123,6 +123,9 @@
         popupList[2].lastChild.textContent = petsInfo[infoIndex]["diseases"].join(", ");
         popupList[3].lastChild.textContent = petsInfo[infoIndex]["parasites"].join(", ");
     }
+    document.querySelector(".arrow--l");
+    document.querySelector(".arrow--r");
+    document.querySelectorAll(".pets__card");
     isWebp();
     menuInit();
 })();
