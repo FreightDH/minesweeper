@@ -642,34 +642,76 @@ html {
   padding: 0 45px;
 }
 
-@supports (padding-left: clamp( 1.25rem , -1.0861354776rem  +  4.873294347vw , 2.8125rem )) {
-  .pets__column {
-    padding-left: clamp( 1.25rem , -1.0861354776rem  +  4.873294347vw , 2.8125rem );
+.slider__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  left: -1080px;
+}
+
+@-webkit-keyframes move-right {
+  from {
+    left: -1080px;
+  }
+
+  to {
+    left: -2160px;
   }
 }
 
-@supports not (padding-left: clamp( 1.25rem , -1.0861354776rem  +  4.873294347vw , 2.8125rem )) {
-  .pets__column {
-    padding-left: calc(1.25rem + 1.5625 * (100vw - 47.9375rem) / 32.0625);
+@keyframes move-right {
+  from {
+    left: -1080px;
+  }
+
+  to {
+    left: -2160px;
   }
 }
 
-@supports (padding-right: clamp( 1.25rem , -1.0861354776rem  +  4.873294347vw , 2.8125rem )) {
-  .pets__column {
-    padding-right: clamp( 1.25rem , -1.0861354776rem  +  4.873294347vw , 2.8125rem );
+.slider__wrapper.move-right {
+  -webkit-animation-name: move-right;
+          animation-name: move-right;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+@-webkit-keyframes move-left {
+  from {
+    left: -1080px;
+  }
+
+  to {
+    left: 0px;
   }
 }
 
-@supports not (padding-right: clamp( 1.25rem , -1.0861354776rem  +  4.873294347vw , 2.8125rem )) {
-  .pets__column {
-    padding-right: calc(1.25rem + 1.5625 * (100vw - 47.9375rem) / 32.0625);
+@keyframes move-left {
+  from {
+    left: -1080px;
   }
+
+  to {
+    left: 0px;
+  }
+}
+
+.slider__wrapper.move-left {
+  -webkit-animation-name: move-left;
+          animation-name: move-left;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
 }
 
 .slider__column {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .card {
@@ -1795,6 +1837,106 @@ html {
         align-self: center;
   }
 
+  .pets__slider {
+    width: 620px;
+  }
+
+  .pets__column {
+    padding: 0 20px;
+  }
+
+  .slider__wrapper {
+    left: -620px;
+  }
+
+@-webkit-keyframes move-right {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: -1240px;
+    }
+}
+
+@keyframes move-right {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: -1240px;
+    }
+}
+
+@-webkit-keyframes move-left {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
+@keyframes move-left {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
+  .slider__wrapper {
+    left: -620px;
+  }
+
+@keyframes move-right {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: -1240px;
+    }
+}
+
+@keyframes move-left {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
+  .slider__wrapper {
+    left: -620px;
+  }
+
+@keyframes move-right {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: -1240px;
+    }
+}
+
+@keyframes move-left {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
   .help__container {
     max-width: 630px;
     margin: 0 auto;
@@ -2384,24 +2526,56 @@ html {
 
 @media (max-width: 76.875em) {
   .pets__slider {
-    width: 710.25px;
+    width: 720px;
   }
-
-@supports (width: clamp( 38.75rem , 29.4058112851rem  +  19.4924406048vw , 44.390625rem )) {
-    .pets__slider {
-      width: clamp( 38.75rem , 29.4058112851rem  +  19.4924406048vw , 44.390625rem );
-    }
-}
-
-@supports not (width: clamp( 38.75rem , 29.4058112851rem  +  19.4924406048vw , 44.390625rem )) {
-    .pets__slider {
-      width: calc(38.75rem + 5.640625 * (100vw - 47.9375rem) / 28.9375);
-    }
-}
 
   .pets__column.column--3 {
     display: none;
   }
+
+  .slider__wrapper {
+    left: -720px;
+  }
+
+@-webkit-keyframes move-right {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: -1440px;
+    }
+}
+
+@keyframes move-right {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: -1440px;
+    }
+}
+
+@-webkit-keyframes move-left {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
+@keyframes move-left {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
 }
 
 .webp .main { background: url(../img/main/background.webp) 0 0/100% 100% no-repeat; }
