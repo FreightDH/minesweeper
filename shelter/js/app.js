@@ -260,7 +260,7 @@
         currentArray.forEach((column => columnActive.append(column)));
         nextArray.forEach((column => columnRight.append(column)));
     }));
-    sliderInit();
     isWebp();
     menuInit();
+    sliderInit();
 })();

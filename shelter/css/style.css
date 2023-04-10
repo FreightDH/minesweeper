@@ -90,6 +90,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow: hidden;
+}
+
 .lock body {
   overflow: hidden;
   -ms-touch-action: none;
@@ -1123,6 +1127,54 @@ html {
   line-height: 150%;
 }
 
+.main-popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.main-popup-body {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 10px;
+}
+
+.main-popup-body__content {
+  width: 700px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2.1875rem;
+  line-height: 130%;
+  text-align: center;
+  letter-spacing: 0.06em;
+  background-color: #FAFAFA;
+}
+
 .no-webp .footer {
   background: url("../img/main/background.jpg") 0 0/100% 100% no-repeat; }
 
@@ -1795,6 +1847,56 @@ html {
   }
 }
 
+@media (max-width: 1230px) {
+  .pets__slider {
+    width: 720px;
+  }
+
+  .slider__wrapper {
+    left: -720px;
+  }
+
+@-webkit-keyframes move-right {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: -1440px;
+    }
+}
+
+@keyframes move-right {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: -1440px;
+    }
+}
+
+@-webkit-keyframes move-left {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
+@keyframes move-left {
+    from {
+      left: -720px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+}
+
 @media (max-width: 62em) {
   .main {
     padding: 150px 0px 0px 0px;
@@ -1835,57 +1937,9 @@ html {
         align-self: center;
   }
 
-  .pets__slider {
-    width: 620px;
-  }
-
   .pets__column {
     padding: 0 20px;
   }
-
-  .slider__wrapper {
-    left: -620px;
-  }
-
-@-webkit-keyframes move-right {
-    from {
-      left: -620px;
-    }
-
-    to {
-      left: -1240px;
-    }
-}
-
-@keyframes move-right {
-    from {
-      left: -620px;
-    }
-
-    to {
-      left: -1240px;
-    }
-}
-
-@-webkit-keyframes move-left {
-    from {
-      left: -620px;
-    }
-
-    to {
-      left: 0px;
-    }
-}
-
-@keyframes move-left {
-    from {
-      left: -620px;
-    }
-
-    to {
-      left: 0px;
-    }
-}
 
   .help__container {
     max-width: 630px;
@@ -1931,6 +1985,56 @@ html {
 @supports not (padding-top: clamp( 0.0000000625rem , -2.8953228328rem  +  14.4766144766vw , 4.0625rem )) {
     .footer__column:last-child {
       padding-top: calc(0.0000000625rem + 4.0624999375 * (100vw - 20rem) / 28.0625);
+    }
+}
+}
+
+@media (max-width: 992px) {
+  .pets__slider {
+    width: 620px;
+  }
+
+  .slider__wrapper {
+    left: -620px;
+  }
+
+@-webkit-keyframes move-right {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: -1240px;
+    }
+}
+
+@keyframes move-right {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: -1240px;
+    }
+}
+
+@-webkit-keyframes move-left {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: 0px;
+    }
+}
+
+@keyframes move-left {
+    from {
+      left: -620px;
+    }
+
+    to {
+      left: 0px;
     }
 }
 }
@@ -2519,57 +2623,9 @@ html {
 }
 
 @media (max-width: 76.875em) {
-  .pets__slider {
-    width: 720px;
-  }
-
   .pets__column.column--3 {
     display: none;
   }
-
-  .slider__wrapper {
-    left: -720px;
-  }
-
-@-webkit-keyframes move-right {
-    from {
-      left: -720px;
-    }
-
-    to {
-      left: -1440px;
-    }
-}
-
-@keyframes move-right {
-    from {
-      left: -720px;
-    }
-
-    to {
-      left: -1440px;
-    }
-}
-
-@-webkit-keyframes move-left {
-    from {
-      left: -720px;
-    }
-
-    to {
-      left: 0px;
-    }
-}
-
-@keyframes move-left {
-    from {
-      left: -720px;
-    }
-
-    to {
-      left: 0px;
-    }
-}
 }
 
 .webp .main { background: url(../img/main/background.webp) 0 0/100% 100% no-repeat; }
