@@ -166,6 +166,27 @@
         activeNames = [];
         return array;
     }
+    function sliderInit() {
+        activeNames = [];
+        prevActiveNames = [].concat(activeNames);
+        nextArray = generateSliderColumn();
+        nextArray.forEach((element => {
+            currentArray.push(element);
+        }));
+        nextArray = generateSliderColumn();
+        currentArray.forEach((element => {
+            pastArray.push(element);
+        }));
+        currentArray = [];
+        nextArray.forEach((element => {
+            currentArray.push(element);
+        }));
+        nextArray = generateSliderColumn();
+        columnLeft.innerHTML = columnActive.innerHTML = columnRight.innerHTML = "";
+        pastArray.forEach((column => columnLeft.append(column)));
+        currentArray.forEach((column => columnActive.append(column)));
+        nextArray.forEach((column => columnRight.append(column)));
+    }
     function forward() {
         pastArray = [];
         currentArray.forEach((element => {
@@ -239,6 +260,7 @@
         currentArray.forEach((column => columnActive.append(column)));
         nextArray.forEach((column => columnRight.append(column)));
     }));
+    sliderInit();
     isWebp();
     menuInit();
 })();
