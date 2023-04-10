@@ -73,95 +73,26 @@
             }
         }));
     }
-    const arrowLeft = document.querySelector(".arrow--l");
-    const arrowRight = document.querySelector(".arrow--r");
-    const slider = document.querySelector(".slider__wrapper");
-    let columnLeft = document.querySelector(".column-left");
-    let columnRight = document.querySelector(".column-right");
-    let petsInfo;
-    let activeNames = [];
-    let prevActiveNames = [];
-    const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-    (async () => {
-        const file = "files/pets.json";
-        const result = await fetch(file);
-        petsInfo = await result.json();
-    })();
-    function createCard(i) {
-        let index;
-        do {
-            index = getRandomNum(1, 8);
-        } while (activeNames.includes(`${petsInfo[index]["name"]}`) || prevActiveNames.includes(`${petsInfo[index]["name"]}`));
-        const card = document.createElement("div");
-        card.classList.add("pets__column");
-        card.classList.add(`column--${++i}`);
-        card.innerHTML = `\n\t\t\t\t\t\t<div class="pets__card card popup-link">\n\t\t\t\t\t\t\t<div class="card__image"><img src="${petsInfo[index]["img"]}" alt="pet"></div>\n\t\t\t\t\t\t\t<div class="card__name">${petsInfo[index]["name"]}</div>\n\t\t\t\t\t\t\t<a href="#" class="card__button btn btn--w"><span>Learn more</span></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t`;
-        activeNames.push(petsInfo[index]["name"]);
-        return card;
-    }
-    const moveLeft = () => {
-        prevActiveNames = [];
-        for (let petsColumn of columnLeft.children) {
-            let card = petsColumn.children[0];
-            prevActiveNames.push(card.children[1].textContent);
-        }
-        slider.classList.add("move-left");
-        arrowLeft.removeEventListener("click", moveLeft);
-        arrowRight.removeEventListener("click", moveRight);
-    };
-    const moveRight = () => {
-        prevActiveNames = [];
-        for (let petsColumn of columnRight.children) {
-            let card = petsColumn.children[0];
-            prevActiveNames.push(card.children[1].textContent);
-        }
-        slider.classList.add("move-right");
-        arrowLeft.removeEventListener("click", moveLeft);
-        arrowRight.removeEventListener("click", moveRight);
-    };
-    arrowLeft.addEventListener("click", moveLeft);
-    arrowRight.addEventListener("click", moveRight);
-    slider.addEventListener("animationend", (animationEvent => {
-        if ("move-left" === animationEvent.animationName) {
-            slider.classList.remove("move-left");
-            document.querySelector(".column-active").innerHTML = columnLeft.innerHTML;
-        } else {
-            slider.classList.remove("move-right");
-            document.querySelector(".column-active").innerHTML = columnRight.innerHTML;
-        }
-        columnLeft = changeColumn(columnLeft);
-        columnRight = changeColumn(columnRight);
-        arrowLeft.addEventListener("click", moveLeft);
-        arrowRight.addEventListener("click", moveRight);
-    }));
-    function changeColumn(column) {
-        column.innerHTML = "";
-        activeNames = [];
-        for (let i = 0; i < 3; i++) {
-            const card = createCard(i);
-            column.append(card);
-        }
-        return column;
-    }
-    const popupLinks = document.querySelectorAll(".popup-link");
     const closeIcon = document.querySelector(".popup__close");
     const popupImage = document.querySelector(".popup__image");
     const popupTitle = document.querySelector(".popup__title");
     const popupSubtitle = document.querySelector(".popup__subtitle");
     const popupText = document.querySelector(".popup__text");
     const popupList = document.querySelectorAll(".popup__list--item");
-    if (popupLinks.length > 0) popupLinks.forEach((link => {
-        link.addEventListener("click", (function(event) {
-            const popup = document.querySelector(".popup");
-            const petName = link.children[1].textContent;
-            popupFill(popup, petName);
-            popupOpen(popup);
-            event.preventDefault();
+    function popupInit(popupLinks) {
+        if (popupLinks.length > 0) popupLinks.forEach((link => {
+            link.addEventListener("click", (function(event) {
+                const popup = document.querySelector(".popup");
+                const petName = link.children[1].textContent;
+                popupFill(popup, petName);
+                popupOpen(popup);
+                event.preventDefault();
+            }));
         }));
-    }));
-    if (closeIcon) closeIcon.addEventListener("click", (function(event) {
-        popupClose(event.target.closest(".popup"));
-    }));
+        if (closeIcon) closeIcon.addEventListener("click", (function(event) {
+            popupClose(event.target.closest(".popup"));
+        }));
+    }
     function popupOpen(popup) {
         if (popup && bodyLockStatus) {
             bodyLock();
@@ -193,6 +124,121 @@
         popupList[2].lastChild.textContent = petsInfo[infoIndex]["diseases"].join(", ");
         popupList[3].lastChild.textContent = petsInfo[infoIndex]["parasites"].join(", ");
     }
+    const arrowLeft = document.querySelector(".arrow--l");
+    const arrowLeftMobile = document.querySelector(".arrow--l--mobile");
+    const arrowRight = document.querySelector(".arrow--r");
+    const arrowRightMobile = document.querySelector(".arrow--r--mobile");
+    const slider = document.querySelector(".slider__wrapper");
+    let columnLeft = document.querySelector(".column-left");
+    let columnActive = document.querySelector(".column-active");
+    let columnRight = document.querySelector(".column-right");
+    let pastArray = [];
+    let currentArray = [];
+    let nextArray = [];
+    let activeNames = [];
+    let prevActiveNames = [];
+    let index;
+    const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    let leftClickCount = 0;
+    let rightClickCount = 0;
+    async function createCard(i, card, index) {
+        const file = "files/pets.json";
+        const result = await fetch(file);
+        const petsInfo = await result.json();
+        card.classList.add("pets__column");
+        card.classList.add(`column--${++i}`);
+        card.innerHTML = `\n\t\t\t\t\t\t<div class="pets__card card popup-link">\n\t\t\t\t\t\t\t<div class="card__image"><img src="${petsInfo[index]["img"]}" alt="pet"></div>\n\t\t\t\t\t\t\t<div class="card__name">${petsInfo[index]["name"]}</div>\n\t\t\t\t\t\t\t<a href="#" class="card__button btn btn--w"><span>Learn more</span></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t`;
+        let popupLinks = document.querySelectorAll(".popup-link");
+        popupInit(popupLinks);
+    }
+    function generateSliderColumn() {
+        let array = [];
+        for (let i = 0; i < 3; i++) {
+            do {
+                index = getRandomNum(0, 7);
+            } while (activeNames.includes(index) || prevActiveNames.includes(index));
+            const card = document.createElement("div");
+            createCard(i, card, index);
+            array.push(card);
+            activeNames.push(index);
+        }
+        prevActiveNames = [].concat(activeNames);
+        activeNames = [];
+        return array;
+    }
+    function forward() {
+        pastArray = [];
+        currentArray.forEach((element => {
+            pastArray.push(element);
+        }));
+        currentArray = [];
+        nextArray.forEach((element => {
+            currentArray.push(element);
+        }));
+        nextArray = generateSliderColumn();
+    }
+    function changeToBackward() {
+        for (let i = 0; i < 3; i++) {
+            let temp = pastArray[i];
+            pastArray[i] = currentArray[i];
+            currentArray[i] = temp;
+        }
+        nextArray = generateSliderColumn();
+    }
+    function backward() {
+        nextArray = [];
+        currentArray.forEach((element => {
+            nextArray.push(element);
+        }));
+        currentArray = [];
+        pastArray.forEach((element => {
+            currentArray.push(element);
+        }));
+        pastArray = generateSliderColumn();
+    }
+    function changeToForward() {
+        for (let i = 0; i < 3; i++) {
+            let temp = nextArray[i];
+            nextArray[i] = currentArray[i];
+            currentArray[i] = temp;
+        }
+        pastArray = generateSliderColumn();
+    }
+    function moveLeft() {
+        slider.classList.add("move-left");
+        arrowLeft.removeEventListener("click", moveLeft);
+        arrowLeftMobile.removeEventListener("click", moveLeft);
+        arrowRight.removeEventListener("click", moveRight);
+        arrowRightMobile.removeEventListener("click", moveRight);
+        if (!leftClickCount && rightClickCount) changeToBackward(); else backward();
+        leftClickCount++;
+        rightClickCount = 0;
+    }
+    function moveRight() {
+        slider.classList.add("move-right");
+        arrowLeft.removeEventListener("click", moveLeft);
+        arrowLeftMobile.removeEventListener("click", moveLeft);
+        arrowRight.removeEventListener("click", moveRight);
+        arrowRightMobile.removeEventListener("click", moveRight);
+        if (!rightClickCount && leftClickCount) changeToForward(); else forward();
+        rightClickCount++;
+        leftClickCount = 0;
+    }
+    arrowLeft.addEventListener("click", moveLeft);
+    arrowLeftMobile.addEventListener("click", moveLeft);
+    arrowRight.addEventListener("click", moveRight);
+    arrowRightMobile.addEventListener("click", moveRight);
+    slider.addEventListener("animationend", (animationEvent => {
+        if ("move-left" === animationEvent.animationName) slider.classList.remove("move-left"); else slider.classList.remove("move-right");
+        arrowLeft.addEventListener("click", moveLeft);
+        arrowLeftMobile.addEventListener("click", moveLeft);
+        arrowRight.addEventListener("click", moveRight);
+        arrowRightMobile.addEventListener("click", moveRight);
+        columnLeft.innerHTML = columnActive.innerHTML = columnRight.innerHTML = "";
+        pastArray.forEach((column => columnLeft.append(column)));
+        currentArray.forEach((column => columnActive.append(column)));
+        nextArray.forEach((column => columnRight.append(column)));
+    }));
     isWebp();
     menuInit();
 })();
