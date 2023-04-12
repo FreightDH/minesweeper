@@ -73,6 +73,8 @@
             }
         }));
     }
+    const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    document.querySelectorAll(".popup-link");
     const closeIcon = document.querySelector(".popup__close");
     const popupImage = document.querySelector(".popup__image");
     const popupTitle = document.querySelector(".popup__title");
@@ -91,6 +93,7 @@
         }));
         if (closeIcon) closeIcon.addEventListener("click", (function(event) {
             popupClose(event.target.closest(".popup"));
+            popupClear();
         }));
     }
     function popupOpen(popup) {
@@ -108,6 +111,16 @@
             popup.classList.remove("popup-open");
         }
     }
+    function popupClear() {
+        popupImage.innerHTML = "";
+        popupTitle.textContent = "";
+        popupSubtitle.textContent = "";
+        popupText.textContent = "";
+        popupList[0].lastChild.textContent = "";
+        popupList[1].lastChild.textContent = "";
+        popupList[2].lastChild.textContent = "";
+        popupList[3].lastChild.textContent = "";
+    }
     async function popupFill(popup, petName) {
         const file = "files/pets.json";
         const result = await fetch(file);
@@ -115,7 +128,7 @@
         const length = petsInfo.length;
         let infoIndex;
         for (infoIndex = 0; infoIndex < length; infoIndex++) if (petsInfo[infoIndex]["name"] === petName) break;
-        popupImage.firstChild.setAttribute("src", petsInfo[infoIndex]["img"]);
+        popupImage.innerHTML = `<img src="${petsInfo[infoIndex]["img"]}" alt="pet">`;
         popupTitle.textContent = petsInfo[infoIndex]["name"];
         popupSubtitle.textContent = petsInfo[infoIndex]["type"] + " - " + petsInfo[infoIndex]["breed"];
         popupText.textContent = petsInfo[infoIndex]["description"];
@@ -138,7 +151,6 @@
     let activeNames = [];
     let prevActiveNames = [];
     let index;
-    const getRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
     let leftClickCount = 0;
     let rightClickCount = 0;
     async function createCard(i, card, index) {
@@ -147,7 +159,7 @@
         const petsInfo = await result.json();
         card.classList.add("pets__column");
         card.classList.add(`column--${++i}`);
-        card.innerHTML = `\n\t\t\t\t\t\t<div class="pets__card card popup-link">\n\t\t\t\t\t\t\t<div class="card__image"><img src="${petsInfo[index]["img"]}" alt="pet"></div>\n\t\t\t\t\t\t\t<div class="card__name">${petsInfo[index]["name"]}</div>\n\t\t\t\t\t\t\t<a href="#" class="card__button btn btn--w"><span>Learn more</span></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t`;
+        card.innerHTML = `\n\t\t\t\t\t\t\t<div class="pets__card card popup-link">\n\t\t\t\t\t\t\t\t<div class="card__image"><img src="${petsInfo[index]["img"]}" alt="pet"></div>\n\t\t\t\t\t\t\t\t<div class="card__name">${petsInfo[index]["name"]}</div>\n\t\t\t\t\t\t\t\t<a href="#" class="card__button btn btn--w"><span>Learn more</span></a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t`;
         let popupLinks = document.querySelectorAll(".popup-link");
         popupInit(popupLinks);
     }
