@@ -163,7 +163,7 @@
         let popupLinks = document.querySelectorAll(".popup-link");
         popupInit(popupLinks);
     }
-    function generateSliderColumn() {
+    function generateSliderColumn(column) {
         let array = [];
         for (let i = 0; i < 3; i++) {
             do {
@@ -182,17 +182,10 @@
         activeNames = [];
         prevActiveNames = [].concat(activeNames);
         nextArray = generateSliderColumn();
-        nextArray.forEach((element => {
-            currentArray.push(element);
-        }));
+        currentArray = [].concat(nextArray);
         nextArray = generateSliderColumn();
-        currentArray.forEach((element => {
-            pastArray.push(element);
-        }));
-        currentArray = [];
-        nextArray.forEach((element => {
-            currentArray.push(element);
-        }));
+        pastArray = [].concat(currentArray);
+        currentArray = [].concat(nextArray);
         nextArray = generateSliderColumn();
         columnLeft.innerHTML = columnActive.innerHTML = columnRight.innerHTML = "";
         pastArray.forEach((column => columnLeft.append(column)));
@@ -200,14 +193,8 @@
         nextArray.forEach((column => columnRight.append(column)));
     }
     function forward() {
-        pastArray = [];
-        currentArray.forEach((element => {
-            pastArray.push(element);
-        }));
-        currentArray = [];
-        nextArray.forEach((element => {
-            currentArray.push(element);
-        }));
+        pastArray = [].concat(currentArray);
+        currentArray = [].concat(nextArray);
         nextArray = generateSliderColumn();
     }
     function changeToBackward() {
@@ -219,14 +206,8 @@
         nextArray = generateSliderColumn();
     }
     function backward() {
-        nextArray = [];
-        currentArray.forEach((element => {
-            nextArray.push(element);
-        }));
-        currentArray = [];
-        pastArray.forEach((element => {
-            currentArray.push(element);
-        }));
+        nextArray = [].concat(currentArray);
+        currentArray = [].concat(pastArray);
         pastArray = generateSliderColumn();
     }
     function changeToForward() {
@@ -243,7 +224,7 @@
         arrowLeftMobile.removeEventListener("click", moveLeft);
         arrowRight.removeEventListener("click", moveRight);
         arrowRightMobile.removeEventListener("click", moveRight);
-        if (!leftClickCount && rightClickCount) changeToBackward(); else backward();
+        if (!leftClickCount && rightClickCount > 1) changeToBackward(); else backward();
         leftClickCount++;
         rightClickCount = 0;
     }

@@ -191,14 +191,13 @@
         cardName.textContent = petsInfo[index]["name"];
         let popupLinks = document.querySelectorAll(".popup-link");
         popupInit(popupLinks);
-        console.log("create");
     }
     function paginationInit() {
-        let maxCardsValue = getMaxCardsValue();
+        const maxCardsValue = getMaxCardsValue();
         for (let i = 0; i < maxCardsValue; i++) createCard(pets[i], resultArray[i]);
     }
     function firstPage() {
-        let maxCardsValue = getMaxCardsValue();
+        const maxCardsValue = getMaxCardsValue();
         for (let i = 0; i < maxCardsValue; i++) createCard(pets[i], resultArray[i]);
         currentPage.textContent = 1;
         rightArrow.classList.remove("disabled");
@@ -207,8 +206,8 @@
         leftDoubleArrow.classList.add("disabled");
     }
     function prevPage() {
-        let maxPageValue = getMaxPageValue();
-        let maxCardsValue = getMaxCardsValue();
+        const maxPageValue = getMaxPageValue();
+        const maxCardsValue = getMaxCardsValue();
         if (currentPage.textContent == maxPageValue) {
             rightArrow.classList.remove("disabled");
             rightDoubleArrow.classList.remove("disabled");
@@ -222,8 +221,8 @@
         j++) createCard(pets[j], resultArray[i]);
     }
     function nextPage() {
-        let maxPageValue = getMaxPageValue();
-        let maxCardsValue = getMaxCardsValue();
+        const maxPageValue = getMaxPageValue();
+        const maxCardsValue = getMaxCardsValue();
         if (1 == currentPage.textContent) {
             leftArrow.classList.remove("disabled");
             leftDoubleArrow.classList.remove("disabled");
@@ -237,7 +236,7 @@
         j++) createCard(pets[j], resultArray[i]);
     }
     function lastPage() {
-        let maxCardsValue = getMaxCardsValue();
+        const maxCardsValue = getMaxCardsValue();
         currentPage.textContent = getMaxPageValue();
         rightArrow.classList.add("disabled");
         rightDoubleArrow.classList.add("disabled");
@@ -249,6 +248,13 @@
     leftArrow.addEventListener("click", prevPage);
     rightArrow.addEventListener("click", nextPage);
     rightDoubleArrow.addEventListener("click", lastPage);
+    window.addEventListener("resize", (function(event) {
+        const maxPageValue = getMaxPageValue();
+        if (currentPage.textContent > maxPageValue) lastPage(); else if (currentPage.textContent < maxPageValue) {
+            rightArrow.classList.remove("disabled");
+            rightDoubleArrow.classList.remove("disabled");
+        } else if (1 == currentPage.textContent) firstPage();
+    }));
     isWebp();
     menuInit();
     paginationInit();

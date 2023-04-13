@@ -614,11 +614,6 @@ html {
   transition: all 0.3s ease 0s;
 }
 
-.pets__arrow:not([class*=disabled]):hover {
-  cursor: pointer;
-  background-color: #F1CDB3;
-}
-
 .pets__arrow.arrow--r {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
@@ -1363,13 +1358,6 @@ html {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-.pagination__arrow:hover {
-  background-color: #F1CDB3;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
 }
 
 .pagination__arrow.disabled {
@@ -2611,6 +2599,20 @@ html {
 @media (max-width: 76.875em) {
   .pets__column.column--3 {
     display: none;
+  }
+}
+
+@media (pointer: fine) {
+  .pets__arrow:not([class*=disabled]):hover {
+    cursor: pointer;
+    background-color: #F1CDB3;
+  }
+
+  .pagination__arrow:hover {
+    background-color: #F1CDB3;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
   }
 }
 
