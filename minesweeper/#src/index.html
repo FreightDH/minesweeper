@@ -1,9 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
-	@@include('html/head.html', { "title":"Главная" })
+	@@include('html/head.html', { "title":"Minesweeper" })
 	<body>
 		<div class="wrapper">
 			<main class="page">
+        <section class="game">
+          <div class="game__container">
+            <div class="game__body">
+              <div class="game__header">
+                <div class="header__bombs-count display"><span>000</span></div> 
+                <div class="header__restart"><button><img src="@img/smile-face.png" alt="smile"></button></div>
+                <div class="header__timer display"><span>000</span></div>
+              </div>
+              <div class="game__field">
+                <div class="field__body">
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <!-- <div class="field__cell opened lose"><img src="@img/bomb.png" alt="bomb"></div> -->
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <!-- <div class="field__cell"><img src="@img/flag.png" alt="flag"></div> -->
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                  <div class="field__row">
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                    <div class="field__cell"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 			</main>
 		</div>
 		@@include('html/js.html',{})

@@ -1,0 +1,170 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f9f9f9;
+}
+
+.game {
+
+  &__body {
+    padding: 15px;
+    background-color: #C6C6C6;
+
+    border: 6px solid;
+    border-color: #f9f9f9 #808080 #808080 #f9f9f9;
+  }
+
+  &__header {
+    padding: 5px 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #c0c0c0;
+
+    border: 5px solid;
+    border-color: #808080 #fff #fff #808080;
+  }
+
+  &__field {
+    padding: 10px 0px 0px 0px;
+  }
+}
+.header {
+
+  &__bombs-count {
+  }
+
+  &__restart {
+    width: 40px;
+    height: 40px;
+    margin: 0px 20px;
+
+    background-color: #c6c6c6;
+    border: 4px solid;
+    border-color: #fff #808080 #808080 #fff;
+
+    img {
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    &:active {
+      border-top: 5px solid;
+      border-right: 3px solid;
+      border-bottom: 3px solid;
+      border-left: 5px solid;
+
+      border-color: #808080;
+    }
+  }
+
+  &__timer {
+  }
+}
+
+.display {
+  width: 62px;
+  height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid;
+  border-color: #808080 #fff #fff #808080;
+  background-color: #000;
+  
+  color: red;
+  font-family: "Pixel";
+  font-size: rem(20);
+  line-height: 0;
+  letter-spacing: 1px;
+
+  span {
+    position: relative;
+    top: 1px;
+    right: -2px;
+  }
+}
+
+.field {
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+
+    border: 4px solid;
+    border-color: #808080 #fff #fff #808080;
+  }
+
+  &__row {
+    display: flex;
+  }
+
+  &__cell {
+    width: 24px;
+    height: 24px;
+
+    border: 3px solid;
+    border-color: #fff #808080 #808080 #fff;
+    background-color: #C6C6C6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:active {
+      border: 1px solid #808080;
+      border-collapse: collapse;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &.opened {
+      border: 1px solid #808080;
+      border-collapse: collapse;
+
+      cursor: default;
+    }
+
+    &.lose {
+      background-color: red;
+    }
+  }
+}
+//----------------------------------------------------------------------
+.color--1 {
+  color: blue;
+}
+.color--2 {
+  color: green;
+}
+.color--3 {
+  color: red;
+}
+.color--4 {
+  color: purple;
+}
+.color--5 {
+  color: maroon;
+}
+.color--6 {
+  color: turquoise;
+}
+.color--7 {
+  color: black;
+}
+.color--8 {
+  color: gray;
+}

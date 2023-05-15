@@ -6,11 +6,11 @@
 
 //<ШРИФТЫ>
 //<Подключаем шрифты>
-// @import "fonts/fonts";
+@import "fonts/fonts";
 //</Подключаем шрифты>
 
 //<Шрифт по умолчанию>
-$fontFamily: "";
+$fontFamily: "Minesweeper";
 $fontSize: rem(14);
 $mainColor: #000;
 //</Шрифт по умолчанию>
@@ -98,9 +98,10 @@ body {
 
 //<ОБОЛОЧКА>
 .wrapper { 
-	width: 100%;
-	min-height: 100%;
+	width: 100vw;
+	min-height: 100vh;
 	overflow: hidden;
+  user-select: none;
 	// Прижимаем footer
 	/*
 	display: flex;

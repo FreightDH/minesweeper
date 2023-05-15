@@ -56,7 +56,7 @@ export const fontsStyle = () => {
 				// Если файла нет, создаем его
 				fs.writeFile(fontsFile, '', cb);
 				let newFileOnly;
-				for (var i = 0; i < fontsFiles.length; i++) {
+				for (let i = 0; i < fontsFiles.length; i++) {
 					// Записываем подключения шрифтов в файл стилей
 					let fontFileName = fontsFiles[i].split('.')[0];
 					if (newFileOnly !== fontFileName) {
