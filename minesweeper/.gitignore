@@ -1,0 +1,6 @@
+package-lock.json
+**/*.zip
+node_modules/
+#src/
+.DS_Store
+**/*.rar
