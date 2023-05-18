@@ -184,6 +184,12 @@ import { createCell } from "./cell.js";
 
 export let matrix = [];
 
+const width = 10;
+const height = 10;
+
+const gameField = document.querySelector('.game__field');
+const restartButton = document.querySelector('.header__restart');
+
 function isBomb(cell) {
   return cell === 1 ? true : false;
 }
@@ -200,15 +206,68 @@ function setBombs(bombCount) {
   }
 }
 
+export function showAllBombs() {
+  matrix.forEach((row) => {
+    row.forEach((cell) => {
+      if (cell.isBomb) {
+        cell.openBomb();
+      }
+    })
+  })
+}
+
+export function getAllNeighbours(coordinates) {
+  const { x, y } = coordinates; 
+
+  const neighbours = [];
+  
+  // МИНЫ РЯДОМ
+  if(x > 0 && matrix[x - 1][y]) neighbours.push(matrix[x - 1][y]);
+  if(x < width - 1 && matrix[x + 1][y]) neighbours.push(matrix[x + 1][y]);
+  if(y > 0 && matrix[x][y - 1]) neighbours.push(matrix[x][y - 1]);
+  if(y < height - 1 && matrix[x][y + 1]) neighbours.push(matrix[x][y + 1]);
+  // МИНЫ ПО УГЛАМ
+  if(x > 0 && y > 0 && matrix[x - 1][y - 1]) neighbours.push(matrix[x - 1][y - 1]);
+  if(x > 0 && y <= height - 1 && matrix[x - 1][y + 1]) neighbours.push(matrix[x - 1][y + 1]);
+  if(x < width - 1 && y > 0 && matrix[x + 1][y - 1]) neighbours.push(matrix[x + 1][y - 1]);
+  if(x < width - 1 && y < height - 1 && matrix[x + 1][y + 1]) neighbours.push(matrix[x + 1][y + 1]);
+
+  // console.log(neighbours);
+  return neighbours;
+}
+
 function generateMatrix(width = 10, height = 10, bombCount = 10) {
   matrix = Array.from({ length: height }, () => 
   Array.from({ length: width }), () => false);
 
   setBombs(bombCount);
 
-  matrix.map((row, x) => 
-    row.map((cell, y) => 
-      matrix[x][y] = createCell(isBomb(matrix[x][y]), { x, y })));
+  const fieldBody = document.querySelector('.field__body');
+  fieldBody.innerHTML = '';
+
+  matrix.map((row, x) => {
+    const rowElement = document.createElement('div');
+    rowElement.classList.add('field__row');
+    
+    row = row.map((cell, y) => {
+      matrix[x][y] = createCell(isBomb(matrix[x][y]), { x, y });
+      const cellElement = matrix[x][y].createCellMarkup();
+      
+      rowElement.appendChild(cellElement);
+      return matrix[x][y];
+    });
+
+    fieldBody.appendChild(rowElement);
+
+    return row;
+  });
 }
 
-generateMatrix();
+function newGame() {
+  generateMatrix()
+}
+
+newGame();
+
+
+restartButton.addEventListener('click', newGame);
