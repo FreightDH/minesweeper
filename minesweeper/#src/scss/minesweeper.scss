@@ -127,7 +127,7 @@
       width: 24px;
       height: 24px;
 
-      border: 3px solid;
+      border: 2px solid;
       border-color: #fff #808080 #808080 #fff;
       border-collapse: collapse;
       background-color: #C6C6C6;
@@ -144,7 +144,7 @@
     &:active {
       &::after {
         content: '';
-        border: 1px solid #808080; 
+        border: none;
       }
     }
 
@@ -164,6 +164,18 @@
         display: none;
       }
     }
+
+    // &.flag {
+    //   border: 2px solid;
+    //   border-color: #fff #808080 #808080 #fff;
+    //   border-collapse: collapse;
+    //   background-color: #C6C6C6;
+
+    //   &::after {
+    //     content: '';
+    //     display: none;
+    //   }
+    // }
 
     &.lose {
       background-color: red;
