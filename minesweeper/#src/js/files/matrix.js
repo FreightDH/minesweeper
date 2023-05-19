@@ -183,25 +183,31 @@ import { getRandomNumber } from "./functions.js";
 import { createCell } from "./cell.js";
 
 export let matrix = [];
+// export let isLost = false;
 
 const width = 10;
 const height = 10;
+export const bombsCount = 10;
 
 const gameField = document.querySelector('.game__field');
 const restartButton = document.querySelector('.header__restart');
+const bombsCountDisplay = document.querySelector('.header__bombs-count');
+const timerDisplay = document.querySelector('.header__timer');
+
+const smileFaceTag = '<button><img src="./img/smile-face.png" alt="smile"></button>'
 
 function isBomb(cell) {
   return cell === 1 ? true : false;
 }
 
-function setBombs(bombCount) {
-  while (bombCount) {
-    const x = getRandomNumber(0, 9);
-    const y = getRandomNumber(0, 9);
+function setBombs(bombsCount) {
+  while (bombsCount) {
+    const x = getRandomNumber(0, width - 1);
+    const y = getRandomNumber(0, height - 1);
 
     if (!isBomb(matrix[x][y])) {
       matrix[x][y] = 1;
-      bombCount--;
+      bombsCount--;
     }
   }
 }
@@ -236,11 +242,11 @@ export function getAllNeighbours(coordinates) {
   return neighbours;
 }
 
-function generateMatrix(width = 10, height = 10, bombCount = 10) {
+function generateMatrix(width = 10, height = 10, bombsCount = 10) {
   matrix = Array.from({ length: height }, () => 
   Array.from({ length: width }), () => false);
 
-  setBombs(bombCount);
+  setBombs(bombsCount);
 
   const fieldBody = document.querySelector('.field__body');
   fieldBody.innerHTML = '';
@@ -261,9 +267,16 @@ function generateMatrix(width = 10, height = 10, bombCount = 10) {
 
     return row;
   });
+
+  restartButton.innerHTML = smileFaceTag;
 }
 
 function newGame() {
+  bombsCountDisplay.textContent = bombsCount;
+  timerDisplay.textContent = 0;
+
+  window.clearInterval(window.timer);
+
   generateMatrix()
 }
 

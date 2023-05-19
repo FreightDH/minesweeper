@@ -1,7 +1,16 @@
 import { getAllNeighbours } from "./matrix.js";
 import { showAllBombs } from "./matrix.js";
+import { bombsCount } from "./matrix.js";
+
+let isLost = false;
+let timerStart = false;
+
+const bombsCountDisplay = document.querySelector('.header__bombs-count');
+const timerDisplay = document.querySelector('.header__timer');
+const restartButton = document.querySelector('.header__restart');
 
 // const fieldBody = document.querySelector('.field__body');
+const sadFaceTag = '<button><img src="./img/sad-face.png" alt="smile"></button>'
 const flagTag = '<img src="./img/flag.png" alt="flag">';
 const bombTag = '<img src="./img/bomb.png" alt="bomb">';
 
@@ -12,12 +21,24 @@ export class Cell {
   }
 
   setFlag(isFlagged) {
-    this.isFlagged = isFlagged;
-    if (isFlagged) {
+    if (this.isOpen) return;
+
+    if (isFlagged && +bombsCountDisplay.textContent > 0) {
+      this.isFlagged = isFlagged;
       this.cell.innerHTML = flagTag;
+      bombsCountDisplay.textContent--;
       this.cell.removeEventListener('click', () => this.onClick());
-    } else {
+    } else if (!isFlagged && bombsCountDisplay.textContent == 0) {
+      this.isFlagged = isFlagged;
       this.cell.innerHTML = '';
+      bombsCountDisplay.textContent++;
+      this.cell.addEventListener('click', () => this.onClick());
+    } else if (isFlagged && +bombsCountDisplay.textContent == 0) {
+      return;
+    } else if (!isFlagged && bombsCountDisplay.textContent > 0) {
+      this.isFlagged = isFlagged;
+      this.cell.innerHTML = '';
+      bombsCountDisplay.textContent++;
       this.cell.addEventListener('click', () => this.onClick());
     }
   }
@@ -28,7 +49,6 @@ export class Cell {
 
   countBombs() {
     if (this.isBomb) {
-      this.setValue("bomb")
       return;
     }
 
@@ -61,10 +81,27 @@ export class Cell {
   }
 
   onClick() {
+    if (isLost || this.isFlagged) return;
+
+    if (!timerStart) {
+      timerStart = true;
+      
+      window.timer = window.setInterval(() => {
+        timerDisplay.textContent++;
+      }, 1000);
+    }
+
+    this.cell.classList.add('onclick');
+    
     if (this.isBomb) {
       showAllBombs();
+      
       this.cell.classList.add('lose');
       this.openBomb();
+      
+      isLost = true;
+      window.clearInterval(window.timer);
+      restartButton.innerHTML = sadFaceTag;
       return;
     }
     
@@ -75,9 +112,9 @@ export class Cell {
         if (!neighbour.isOpen) {
           neighbour.onClick();
         }
-      })
+      });
     } 
-    
+      
     this.open();
   }
 
@@ -92,7 +129,16 @@ export class Cell {
     this.cell = cell;
     this.cell.addEventListener('contextmenu', (event) => {
       event.preventDefault();
+      if (isLost) return;
+      
       this.isFlagged ? this.setFlag(false) : this.setFlag(true);
+      if (!timerStart) {
+        timerStart = true;
+        
+        window.timer = window.setInterval(() => {
+          timerDisplay.textContent++;
+        }, 1000);
+      }
     });
 
     this.cell.addEventListener('click', () => this.onClick());
@@ -105,6 +151,8 @@ export function createCell(isBomb, coordinates) {
   const cell = new Cell(isBomb, coordinates);
   
   cell.countBombs();
+  isLost = false;
+  timerStart = false;
   
   return cell;
 }
