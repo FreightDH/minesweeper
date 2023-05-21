@@ -1,9 +1,11 @@
 import { getAllNeighbours } from "./matrix.js";
 import { showAllBombs } from "./matrix.js";
-import { bombsCount } from "./matrix.js";
+import { width, height, bombsCount } from "./matrix.js";
 
 let isLost = false;
+let isWin = false;
 let timerStart = false;
+let cellsToWin = 10 * 10 - 10;
 
 const bombsCountDisplay = document.querySelector('.header__bombs-count');
 const timerDisplay = document.querySelector('.header__timer');
@@ -81,7 +83,7 @@ export class Cell {
   }
 
   onClick() {
-    if (isLost || this.isFlagged) return;
+    if (isLost || this.isFlagged || isWin) return;
 
     if (!timerStart) {
       timerStart = true;
@@ -90,8 +92,6 @@ export class Cell {
         timerDisplay.textContent++;
       }, 1000);
     }
-
-    this.cell.classList.add('onclick');
     
     if (this.isBomb) {
       showAllBombs();
@@ -114,8 +114,16 @@ export class Cell {
         }
       });
     } 
-      
+
+    cellsToWin--;
+
+    if (!cellsToWin) {
+      isWin = true;
+      window.clearInterval(window.timer);
+    }
+
     this.open();
+    console.log(cellsToWin);
   }
 
   createCellMarkup() {
@@ -129,7 +137,7 @@ export class Cell {
     this.cell = cell;
     this.cell.addEventListener('contextmenu', (event) => {
       event.preventDefault();
-      if (isLost) return;
+      if (isLost || isWin) return;
       
       this.isFlagged ? this.setFlag(false) : this.setFlag(true);
       if (!timerStart) {
@@ -151,7 +159,9 @@ export function createCell(isBomb, coordinates) {
   const cell = new Cell(isBomb, coordinates);
   
   cell.countBombs();
+  cellsToWin = 10 * 10 - 10;
   isLost = false;
+  isWin = false;
   timerStart = false;
   
   return cell;

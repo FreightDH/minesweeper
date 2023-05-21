@@ -124,25 +124,6 @@
 
     cursor: pointer;
 
-    // &::after {
-    //   content: '';
-    //   width: 24px;
-    //   height: 24px;
-
-    //   border: 2px solid;
-    //   border-color: #fff #808080 #808080 #fff;
-    //   border-collapse: collapse;
-    //   background-color: #C6C6C6;
-
-    //   position: absolute;
-    //   width: 100%;
-    //   height: 100%;
-    //   top: 0;
-    //   left: 0;
-
-    //   cursor: pointer;
-    // }
-
     &.onclick {
       border: 1px solid #808080;
     }
@@ -157,24 +138,7 @@
       border-collapse: collapse;
 
       cursor: default;
-
-      // &::after {
-      //   content: '';
-      //   display: none;
-      // }
     }
-
-    // &.flag {
-    //   border: 2px solid;
-    //   border-color: #fff #808080 #808080 #fff;
-    //   border-collapse: collapse;
-    //   background-color: #C6C6C6;
-
-    //   &::after {
-    //     content: '';
-    //     display: none;
-    //   }
-    // }
 
     &.lose {
       background-color: red;

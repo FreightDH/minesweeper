@@ -185,8 +185,8 @@ import { createCell } from "./cell.js";
 export let matrix = [];
 // export let isLost = false;
 
-const width = 10;
-const height = 10;
+export const width = 10;
+export const height = 10;
 export const bombsCount = 10;
 
 const gameField = document.querySelector('.game__field');
