@@ -1,5 +1,6 @@
-import { matrix, width, height, cellsToWin } from "./init.js";
+import { matrix, width, height, cellsToWin, setBombs, bombsCount, newGame } from "./init.js";
 
+let firstClick = true;
 let isLost = false;
 let isWin = false;
 let timerStart = false;
@@ -72,6 +73,7 @@ export function resetServiceValues() {
   isWin = false;
   isLost = false;
   clicksCount = 0;
+  firstClick = true;
   timerStart = false;
   currentCountCells = cellsToWin;
 }
@@ -125,6 +127,7 @@ class Cell {
 
     if (count) {
       this.setValue(count);
+      this.cell.classList.add(`color--${this.value}`);
     }
   }
 
@@ -148,6 +151,11 @@ class Cell {
     if (isLost || this.isFlagged || isWin) return;
 
     if (!timerStart) startTimer();
+
+    if (firstClick) {
+      firstClick = false;
+      setBombs(bombsCount, this.coordinates);
+    }
 
     if (this.isBomb) {
       const restartButton = document.querySelector(".header__restart");
@@ -192,10 +200,6 @@ class Cell {
     const cell = document.createElement("div");
     cell.classList.add("field__cell");
 
-    if (this.value) {
-      cell.classList.add(`color--${this.value}`);
-    }
-
     this.cell = cell;
 
     this.cell.addEventListener("contextmenu", (event) => {
@@ -218,7 +222,7 @@ class Cell {
 export function createCell(isBomb, coordinates) {
   const cell = new Cell(isBomb, coordinates);
 
-  cell.countBombs();
+  // cell.countBombs();
 
   return cell;
 }
