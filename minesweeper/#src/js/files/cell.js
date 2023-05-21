@@ -7,6 +7,8 @@ import {
   setBombs,
 } from "./init.js";
 
+import songs from "./sounds.js";
+
 let firstClick = true;
 let isLost = false;
 let isWin = false;
@@ -74,6 +76,11 @@ function showResult(status) {
   resultClicks.textContent = `Clicks: ${clicksCount}`;
 }
 
+function playAudio(type) {
+  const audio = new Audio(songs[type]);
+  audio.play();
+}
+
 export function resetServiceValues() {
   timerDisplay = document.querySelector(".header__timer");
   bombsCountDisplay = document.querySelector(".header__bombs-count");
@@ -101,6 +108,7 @@ class Cell {
         this.isFlagged = isFlagged;
         this.cell.innerHTML = flagTag;
         bombsCountDisplay.textContent--;
+        playAudio("flag");
       } else {
         return;
       }
@@ -108,6 +116,7 @@ class Cell {
       this.isFlagged = isFlagged;
       this.cell.innerHTML = "";
       bombsCountDisplay.textContent++;
+      playAudio("flag-off");
     }
   }
 
@@ -149,7 +158,10 @@ class Cell {
 
   onClick() {
     if (isLost || isWin) return;
-    if (this.isFlagged) { clicksCount--; return; }
+    if (this.isFlagged || this.isOpen) {
+      clicksCount--;
+      return;
+    }
 
     if (!timerStart) startTimer();
 
@@ -167,6 +179,7 @@ class Cell {
 
       showAllBombs();
       showResult("Lose");
+      playAudio("lose");
 
       isLost = true;
       window.clearInterval(window.timer);
@@ -191,6 +204,7 @@ class Cell {
       isWin = true;
       showAllBombs();
       showResult("Win");
+      playAudio("win");
       window.clearInterval(window.timer);
     }
 
@@ -212,8 +226,10 @@ class Cell {
     });
 
     this.cell.addEventListener("click", () => {
+      if (!this.isOpen && !this.isFlagged && !this.isBomb && !isLost && !isWin)
+        playAudio("click");
+
       clicksCount++;
-      console.log(clicksCount);
       this.onClick();
     });
 
