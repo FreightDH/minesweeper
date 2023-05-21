@@ -11,6 +11,12 @@
 .game {
   &__container {
     display: flex;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__body {
@@ -19,6 +25,10 @@
 
     border: 6px solid;
     border-color: #f9f9f9 #808080 #808080 #f9f9f9;
+
+    @media (max-width: $mobile) {
+      margin: 0px 0px 30px 0px;
+    }
   }
 
   &__header {
@@ -42,6 +52,11 @@
     display: none;
     width: 150px;
     margin: 0px 0px 0px 50px;
+
+    @media (max-width: $mobile) {
+      width: 100%;
+      margin: 0px 0px 0px 0px;
+    }
 
     &.show {
       display: block;
@@ -133,10 +148,17 @@
 
     position: relative;
 
+    font-family: "Minesweeper";
+
     cursor: pointer;
 
     &.onclick {
       border: 1px solid #808080;
+    }
+
+    &.small {
+      width: 17px;
+      height: 17px;
     }
 
     img {

@@ -10,9 +10,8 @@ textarea {
 }
 .input {
 	border-radius: 0 !important;
-	width: 100%;
-	display: block;
-	padding: 0px 20px;
+  border-bottom: 1px solid #000;
+  margin: 0px 0px 0px 5px;
 	&:focus{}
 	&:err{}
 }

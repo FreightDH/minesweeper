@@ -3,9 +3,24 @@
 	@@include('html/head.html', { "title":"Minesweeper" })
 	<body>
 		
-    <!-- <section class="settings">
-
-    </section> -->
+    <section class="settings">
+      <div class="settings__body">
+        <div class="settings__difficulty">
+          <button class="difficulty__option active">Easy / </button>
+          <button class="difficulty__option">Medium / </button>
+          <button class="difficulty__option">Hard</button>
+        </div>
+        <div class="settings__bombs">
+          Bombs:
+          <input type="number" name="bombs" min="10" max="99" value="10" class="input">
+        </div>
+        <button class="settings__records">Show records</button>
+        <div class="settings__theme">
+          <button class="theme__option active">Light / </button>
+          <button class="theme__option">Dark</button>
+        </div>
+      </div>
+    </section>
 		@@include('html/js.html',{})
 	</body>
 </html>

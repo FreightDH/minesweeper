@@ -132,7 +132,7 @@ export function newGame() {
   cellsToWin = width * height - bombsCount;
   window.clearInterval(window.timer);
 
-  generateMatrix();
+  generateMatrix(width, height, bombsCount);
   generateHTML();
   resetServiceValues();
 }

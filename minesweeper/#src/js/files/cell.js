@@ -214,6 +214,8 @@ class Cell {
   createCellMarkup() {
     const cell = document.createElement("div");
     cell.classList.add("field__cell");
+    
+    if (width === 25) cell.classList.add('small');
 
     this.cell = cell;
 

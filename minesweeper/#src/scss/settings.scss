@@ -1,0 +1,58 @@
+.settings {
+  width: 200px;
+
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+
+  border: 2px solid rgba($color: #000000, $alpha: .6);
+  border-radius: 3px;
+  background-color: #fff;
+
+  font-size: rem(16);
+  font-weight: 500;
+  color: #000;
+
+  &__body {
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__difficulty {
+    opacity: .6;
+  }
+
+  &__bombs {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  &__records {
+    padding: 0px 0px 10px 0px;
+  }
+
+  &__theme {
+    opacity: .6;
+  }
+}
+.difficulty {
+
+  &__option {
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+.theme {
+
+  &__option {
+    &.active {
+      opacity: 1;
+    }
+  }
+}
