@@ -4,6 +4,7 @@ let isLost = false;
 let isWin = false;
 let timerStart = false;
 let currentCountCells = 0;
+let clicksCount = 0;
 let timerDisplay = "";
 let bombsCountDisplay = "";
 
@@ -52,13 +53,27 @@ function startTimer() {
   }, 1000);
 }
 
+function showResult(status) {
+  const result = document.querySelector(".game__result");
+  const resultStatus = document.querySelector(".result__status");
+  const resultTime = document.querySelector(".result__time");
+  const resultClicks = document.querySelector(".result__clicks");
+
+  result.classList.add("show");
+  resultStatus.textContent = `${status}!`;
+  resultStatus.classList.add(`${status.toLowerCase()}`);
+  resultTime.textContent = `Time: ${timerDisplay.textContent} sec`;
+  resultClicks.textContent = `Clicks: ${clicksCount}`;
+}
+
 export function resetServiceValues() {
   timerDisplay = document.querySelector(".header__timer");
   bombsCountDisplay = document.querySelector(".header__bombs-count");
-  currentCountCells = cellsToWin;
-  isLost = false;
   isWin = false;
+  isLost = false;
+  clicksCount = 0;
   timerStart = false;
+  currentCountCells = cellsToWin;
 }
 
 class Cell {
@@ -77,7 +92,9 @@ class Cell {
         this.isFlagged = isFlagged;
         this.cell.innerHTML = flagTag;
         bombsCountDisplay.textContent--;
-        this.cell.removeEventListener("click", () => this.onClick());
+        this.cell.removeEventListener("click", () => {
+          this.onClick();
+        });
       } else {
         return;
       }
@@ -85,7 +102,10 @@ class Cell {
       this.isFlagged = isFlagged;
       this.cell.innerHTML = "";
       bombsCountDisplay.textContent++;
-      this.cell.addEventListener("click", () => this.onClick());
+      this.cell.addEventListener("click", () => {
+        clicksCount++;
+        this.onClick();
+      });
     }
   }
 
@@ -137,6 +157,7 @@ class Cell {
       this.openBomb();
 
       showAllBombs();
+      showResult("Lose");
 
       isLost = true;
       window.clearInterval(window.timer);
@@ -160,6 +181,7 @@ class Cell {
     if (!currentCountCells) {
       isWin = true;
       showAllBombs();
+      showResult("Win");
       window.clearInterval(window.timer);
     }
 
@@ -184,7 +206,10 @@ class Cell {
       this.isFlagged ? this.setFlag(false) : this.setFlag(true);
     });
 
-    this.cell.addEventListener("click", () => this.onClick());
+    this.cell.addEventListener("click", () => {
+      clicksCount++;
+      this.onClick();
+    });
 
     return cell;
   }

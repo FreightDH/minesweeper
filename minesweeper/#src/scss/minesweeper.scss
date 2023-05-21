@@ -9,6 +9,9 @@
 }
 
 .game {
+  &__container {
+    display: flex;
+  }
 
   &__body {
     padding: 15px;
@@ -33,6 +36,16 @@
 
   &__field {
     padding: 10px 0px 0px 0px;
+  }
+
+  &__result {
+    display: none;
+    width: 150px;
+    margin: 0px 0px 0px 50px;
+
+    &.show {
+      display: block;
+    }
   }
 }
 .header {
@@ -144,6 +157,36 @@
       background-color: red;
     }
   }
+}
+
+.result {
+
+  &__body {
+    padding: 10px;
+
+    font-family: "Open Sans";
+    font-size: 18px;
+
+    border: 2px solid #515151;
+  }
+
+  &__status {
+    &.win {
+      color: green;
+    }
+    &.lose {
+      color: red;
+    }
+  }
+
+  &__time {
+    padding: 5px 0;
+  }
+
+  &__clicks {
+  }
+}
+.win {
 }
 //----------------------------------------------------------------------
 .color--1 {

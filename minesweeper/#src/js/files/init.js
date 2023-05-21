@@ -95,8 +95,29 @@ function generateHTML() {
 
   gameField.appendChild(fieldBody);
   //-----------------------------------------------------------------------
+  const gameResult = document.createElement("div");
+  gameResult.classList.add("game__result");
+
+  const resultBody = document.createElement("div");
+  resultBody.classList.add("result__body");
+
+  const resultStatus = document.createElement("div");
+  resultStatus.classList.add("result__status");
+  resultStatus.textContent = "Win!";
+
+  const resultTime = document.createElement("div");
+  resultTime.classList.add("result__time");
+  resultTime.textContent = "Time: ";
+
+  const resultClicks = document.createElement("div");
+  resultClicks.classList.add("result__clicks");
+  resultClicks.textContent = "Clicks: ";
+
+  resultBody.append(resultStatus, resultTime, resultClicks);
+  gameResult.appendChild(resultBody);
+  //-----------------------------------------------------------------------
   gameBody.append(gameHeader, gameField);
-  gameContainer.appendChild(gameBody);
+  gameContainer.append(gameBody, gameResult);
   game.appendChild(gameContainer);
   page.appendChild(game);
   wrapper.appendChild(page);
