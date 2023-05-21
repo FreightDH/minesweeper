@@ -1,4 +1,11 @@
-import { matrix, width, height, cellsToWin, setBombs, bombsCount, newGame } from "./init.js";
+import {
+  matrix,
+  width,
+  height,
+  bombsCount,
+  cellsToWin,
+  setBombs,
+} from "./init.js";
 
 let firstClick = true;
 let isLost = false;
@@ -94,9 +101,6 @@ class Cell {
         this.isFlagged = isFlagged;
         this.cell.innerHTML = flagTag;
         bombsCountDisplay.textContent--;
-        this.cell.removeEventListener("click", () => {
-          this.onClick();
-        });
       } else {
         return;
       }
@@ -104,10 +108,6 @@ class Cell {
       this.isFlagged = isFlagged;
       this.cell.innerHTML = "";
       bombsCountDisplay.textContent++;
-      this.cell.addEventListener("click", () => {
-        clicksCount++;
-        this.onClick();
-      });
     }
   }
 
@@ -148,7 +148,8 @@ class Cell {
   }
 
   onClick() {
-    if (isLost || this.isFlagged || isWin) return;
+    if (isLost || isWin) return;
+    if (this.isFlagged) { clicksCount--; return; }
 
     if (!timerStart) startTimer();
 
@@ -212,6 +213,7 @@ class Cell {
 
     this.cell.addEventListener("click", () => {
       clicksCount++;
+      console.log(clicksCount);
       this.onClick();
     });
 
@@ -221,8 +223,6 @@ class Cell {
 
 export function createCell(isBomb, coordinates) {
   const cell = new Cell(isBomb, coordinates);
-
-  // cell.countBombs();
 
   return cell;
 }

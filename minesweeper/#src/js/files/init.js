@@ -9,29 +9,11 @@ export let cellsToWin = width * height - bombsCount;
 
 const smileFaceTag = '<button><img src="./img/smile-face.png" alt="smile"></button>';
 
-export function isBomb(cell) {
+function isBomb(cell) {
   return cell === 1 ? true : false;
 }
 
-export function setBombs(bombsCount, coordinates) {  
-  while (bombsCount) {
-    const x = getRandomNumber(0, width - 1);
-    const y = getRandomNumber(0, height - 1);
-
-    if (!isBomb(matrix[x][y]) && coordinates.x !== x && coordinates.y !== y) {
-      matrix[x][y].isBomb = true;
-      bombsCount--;
-    }
-  }
-
-  matrix.forEach((row) => {
-    row.forEach((cell) => {
-      cell.countBombs();
-    });
-  });
-}
-
-export function generateMatrix(width = 10, height = 10, bombsCount = 10) {
+function generateMatrix(width = 10, height = 10, bombsCount = 10) {
   matrix = Array.from(
     { length: height },
     () => Array.from({ length: width }),
@@ -126,6 +108,24 @@ function generateHTML() {
   page.appendChild(game);
   wrapper.appendChild(page);
   document.body.insertAdjacentElement("afterbegin", wrapper);
+}
+
+export function setBombs(bombsCount, coordinates) {
+  while (bombsCount) {
+    const x = getRandomNumber(0, width - 1);
+    const y = getRandomNumber(0, height - 1);
+
+    if (!isBomb(matrix[x][y]) && coordinates.x !== x && coordinates.y !== y) {
+      matrix[x][y].isBomb = true;
+      bombsCount--;
+    }
+  }
+
+  matrix.forEach((row) => {
+    row.forEach((cell) => {
+      cell.countBombs();
+    });
+  });
 }
 
 export function newGame() {
