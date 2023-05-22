@@ -6,7 +6,7 @@ import ifPlugin from "gulp-if";
 import prettier from "gulp-prettier";
 import rename from "gulp-rename";
 
-// Экспортирт объекта
+// Экспорт объекта
 export const plugins = {
   notify,
   if: ifPlugin,

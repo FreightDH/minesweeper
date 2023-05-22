@@ -24,5 +24,4 @@
   - [ ] Implement ability to change the size (easy - 10x10, medium - 15x15, hard - 25x25) and number of mines for each size of the field (from 10 to 99). (0/20)
   - [ ] Implemented saving the latest 10 results using LocalStorage. (0/10)
   - [ ] Implemented saving the state of the game. (0/10)
-  - [ ] Option to choose different themes for the game board (dark/light themes). (0/10)
-  - [ ] 
+  - [ ] Option to choose different themes for the game board (dark/light themes). (0/10) 

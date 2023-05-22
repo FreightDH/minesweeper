@@ -26,15 +26,14 @@ import { images } from "./config/gulp-tasks/images.js";
 import { ftp } from "./config/gulp-tasks/ftp.js";
 import { zip } from "./config/gulp-tasks/zip.js";
 import { sprite } from "./config/gulp-tasks/sprite.js";
-import { gitignore } from "./config/gulp-tasks/gitignore.js";
 import { otfToTtf, ttfToWoff, fontsStyle } from "./config/gulp-tasks/fonts.js";
 
 // Последовательная обработка шрифтов
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fontsStyle);
 // Основные задачи выполняются параллельно после обработки шрифтов
-const devTasks = gulp.parallel(fonts, gitignore);
+const devTasks = gulp.parallel(fonts);
 // Основные задачи выполняются параллельно после обработки шрифтов
-const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images, gitignore));
+const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));
 
 // Экспорт задач
 export { html }
