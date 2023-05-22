@@ -6,7 +6,7 @@ export let width = 10;
 export let height = 10;
 export let bombsCount = 10;
 export let cellsToWin = width * height - bombsCount;
-let firstInit = true;
+export let recordsArray = [];
 
 const smileFaceTag =
   '<button><img src="./img/smile-face.png" alt="smile"></button>';
@@ -206,6 +206,9 @@ function generateHTML() {
   const settingsRecords = document.createElement("button");
   settingsRecords.classList.add("settings__records");
   settingsRecords.textContent = "Show records";
+  settingsRecords.addEventListener('click', (event) => {
+    records.classList.add('opened');
+  });
 
   const settingsTheme = document.createElement("div");
   settingsTheme.classList.add("settings__theme");
@@ -241,10 +244,45 @@ function generateHTML() {
     }
   });
   //-----------------------------------------------------------------------
+  const records = document.createElement("section");
+  records.classList.add("records");
+  records.addEventListener('click', (event) => {
+    if (!event.target.closest('records__content')) {
+      records.classList.remove("opened");
+    }
+  });
+
+  const recordsBody = document.createElement("div");
+  recordsBody.classList.add("records__body");
+
+  const recordsContent = document.createElement("div");
+  recordsContent.classList.add("records__content");
+
+  const recordsClose = document.createElement("div");
+  recordsClose.classList.add("records__close");
+  recordsClose.innerHTML =
+    '<img src="./img/cross.svg" alt="cross">';
+  recordsClose.addEventListener("click", (event) => {
+    records.classList.remove("opened");
+  });
+
+  const recordsList = document.createElement("ul");
+  recordsList.classList.add("records__list");
+  recordsArray.forEach((record, index) => {
+    const recordsItem = document.createElement('li');
+    recordsItem.classList.add('records__item');
+    recordsItem.textContent = `${index + 1}. ${record} `;
+    recordsList.appendChild(recordsItem);
+  });
+
+  recordsContent.append(recordsClose, recordsList);
+  recordsBody.appendChild(recordsContent);
+  records.appendChild(recordsBody);
+  //-----------------------------------------------------------------------
   gameBody.append(gameHeader, gameField);
   gameContainer.append(gameBody, gameResult);
   game.appendChild(gameContainer);
-  page.append(game, settings);
+  page.append(game, settings, records);
   wrapper.appendChild(page);
   document.body.insertAdjacentElement("afterbegin", wrapper);
 }
@@ -278,6 +316,19 @@ export function newGame(width = 10, height = 10, bombsCount = 10) {
 }
 
 function getLocalStorage() {
+  const records = localStorage.getItem("records");
+  const recordsList = document.querySelector('.records__list');
+
+  if (records) {
+    recordsArray = records.split(' - ');
+    recordsArray.forEach((record, index) => {
+      const recordsItem = document.createElement('li');
+      recordsItem.classList.add('records__item');
+      recordsItem.textContent = `${index + 1}. ${record}`;
+      recordsList.appendChild(recordsItem);
+    });
+  }
+
   const difficulty = localStorage.getItem("difficulty");
 
   if (difficulty) {

@@ -5,6 +5,7 @@ import {
   bombsCount,
   cellsToWin,
   setBombs,
+  recordsArray,
 } from "./init.js";
 
 import songs from "./sounds.js";
@@ -127,8 +128,6 @@ class Cell {
   countBombs() {
     if (this.isBomb) return;
 
-    console.log('count');
-
     const neighbours = getAllNeighbours(this.coordinates);
     let count = 0;
 
@@ -176,6 +175,13 @@ class Cell {
       const restartButton = document.querySelector(".header__restart");
       restartButton.innerHTML = sadFaceTag;
 
+      const resultTime = timerDisplay.textContent;
+      if (recordsArray.length === 10) {
+        recordsArray.shift();
+      }
+      recordsArray.push(`Lose (${resultTime} sec, ${clicksCount} clicks)`);
+      localStorage.setItem("records", recordsArray.join(' - '));
+
       this.cell.classList.add("lose");
       this.openBomb();
 
@@ -203,6 +209,13 @@ class Cell {
     currentCountCells--;
 
     if (!currentCountCells) {
+      const resultTime = timerDisplay.textContent;
+      if (recordsArray.length === 10) {
+        recordsArray.shift();
+      }
+      recordsArray.push(`Win (${resultTime} sec, ${clicksCount} clicks)`);
+      localStorage.setItem("records", recordsArray.join(' - '));
+      
       isWin = true;
       showAllBombs();
       showResult("Win");
