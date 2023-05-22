@@ -127,6 +127,8 @@ class Cell {
   countBombs() {
     if (this.isBomb) return;
 
+    console.log('count');
+
     const neighbours = getAllNeighbours(this.coordinates);
     let count = 0;
 

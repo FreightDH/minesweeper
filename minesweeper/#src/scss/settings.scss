@@ -33,15 +33,16 @@
     background-color: #fff;
 
     transition: all 0.3s ease 0s;
+    visibility: hidden;
     opacity: 0;
 
     &.opened {
+      visibility: visible;
       opacity: 1;
     }
   }
 
   &__difficulty {
-    opacity: .6;
   }
 
   &__bombs {
@@ -55,20 +56,23 @@
   }
 
   &__theme {
-    opacity: .6;
   }
 }
 .difficulty {
 
   &__option {
+    opacity: 0.6;
+
     &.active {
-      // opacity: 1 !important;
+      opacity: 1;
     }
   }
 }
 .theme {
 
   &__option {
+    opacity: .6;
+
     &.active {
       opacity: 1;
     }
