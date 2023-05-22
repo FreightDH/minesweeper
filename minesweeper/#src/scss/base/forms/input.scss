@@ -1,22 +1,26 @@
 // <INPUT (inp + tab)>
 // Snippet code "inp"
-input[type=text],
-input[type=email],
-input[type=tel],
+input[type="text"],
+input[type="email"],
+input[type="tel"],
 textarea {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .input {
-	border-radius: 0 !important;
+  border-radius: 0 !important;
   border-bottom: 1px solid #000;
   margin: 0px 0px 0px 5px;
-	&:focus{}
-	&:err{}
+
+  &.dark {
+    color: #e4e4e4;
+    background-color: #1f1f22;
+    border-bottom: 1px solid #e4e4e4;
+  }
 }
 textarea.input {
-	resize: none;
-	padding: 0px 0px 0px 0px;
+  resize: none;
+  padding: 0px 0px 0px 0px;
 }
 // </INPUT>

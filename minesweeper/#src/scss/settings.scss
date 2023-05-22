@@ -28,7 +28,7 @@
     justify-content: center;
     align-items: center;
 
-    border: 2px solid rgba($color: #000000, $alpha: .6);
+    border: 2px solid rgba($color: #000000, $alpha: 0.6);
     border-radius: 3px;
     background-color: #fff;
 
@@ -39,6 +39,12 @@
     &.opened {
       visibility: visible;
       opacity: 1;
+    }
+
+    &.dark {
+      background-color: #1f1f22;
+      border: 2px solid #c6c6c6;
+      color: #e4e4e4;
     }
   }
 
@@ -59,9 +65,12 @@
   }
 }
 .difficulty {
-
   &__option {
     opacity: 0.6;
+
+    &.dark {
+      opacity: 0.5;
+    }
 
     &.active {
       opacity: 1;
@@ -69,9 +78,12 @@
   }
 }
 .theme {
-
   &__option {
-    opacity: .6;
+    opacity: 0.6;
+
+    &.dark {
+      opacity: 0.5;
+    }
 
     &.active {
       opacity: 1;

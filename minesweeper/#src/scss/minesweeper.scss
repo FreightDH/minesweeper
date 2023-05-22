@@ -6,6 +6,10 @@
   align-items: center;
 
   background-color: #f9f9f9;
+
+  &.dark {
+    background-color: #1f1f22;
+  }
 }
 
 .game {
@@ -29,6 +33,11 @@
     @media (max-width: $mobile) {
       margin: 0px 0px 30px 0px;
     }
+
+    &.dark {
+      background-color: #808080;
+      border-color: #c6c6c6 #515151 #515151 #c6c6c6;
+    }
   }
 
   &__header {
@@ -42,6 +51,11 @@
 
     border: 5px solid;
     border-color: #808080 #fff #fff #808080;
+
+    &.dark {
+      background-color: #808080;
+      border-color: #515151 #c6c6c6 #c6c6c6 #515151;
+    }
   }
 
   &__field {
@@ -89,6 +103,15 @@
 
       border-color: #808080;
     }
+
+    &.dark {
+      background-color: #808080;
+      border-color: #c6c6c6 #515151 #515151 #c6c6c6;
+
+      &:active {
+        border-color: #515151;
+      }
+    }
   }
 
   &__timer {
@@ -105,6 +128,7 @@
 
   border: 2px solid;
   border-color: #808080 #fff #fff #808080;
+
   background-color: #000;
 
   color: red;
@@ -112,6 +136,10 @@
   font-size: rem(20);
   line-height: 0;
   letter-spacing: 1px;
+
+  &.dark {
+    border-color: #515151 #c6c6c6 #c6c6c6 #515151;
+  }
 
   span {
     position: relative;
@@ -127,6 +155,10 @@
 
     border: 4px solid;
     border-color: #808080 #fff #fff #808080;
+
+    &.dark {
+      border-color: #515151 #c6c6c6 #c6c6c6 #515151;
+    }
   }
 
   &__row {
@@ -174,6 +206,15 @@
       border-collapse: collapse;
 
       cursor: default;
+
+      &.dark {
+        border: 1px solid #515151;
+      }
+    }
+
+    &.dark {
+      background-color: #808080;
+      border-color: #c6c6c6 #515151 #515151 #c6c6c6;
     }
 
     &.lose {
@@ -190,6 +231,11 @@
     font-size: 18px;
 
     border: 2px solid #515151;
+
+    &.dark {
+      color: #e4e4e4;
+      border: 2px solid #c6c6c6;
+    }
   }
 
   &__status {

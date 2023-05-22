@@ -19,7 +19,8 @@ let clicksCount = 0;
 let timerDisplay = "";
 let bombsCountDisplay = "";
 
-const sadFaceTag = '<button><img src="./img/sad-face.png" alt="smile"></button>';
+const sadFaceTag =
+  '<button><img src="./img/sad-face.png" alt="smile"></button>';
 const flagTag = '<img src="./img/flag.png" alt="flag">';
 const bombTag = '<img src="./img/bomb.png" alt="bomb">';
 
@@ -180,7 +181,7 @@ class Cell {
         recordsArray.shift();
       }
       recordsArray.push(`Lose (${resultTime} sec, ${clicksCount} clicks)`);
-      localStorage.setItem("records", recordsArray.join(' - '));
+      localStorage.setItem("records", recordsArray.join(" - "));
 
       this.cell.classList.add("lose");
       this.openBomb();
@@ -214,8 +215,8 @@ class Cell {
         recordsArray.shift();
       }
       recordsArray.push(`Win (${resultTime} sec, ${clicksCount} clicks)`);
-      localStorage.setItem("records", recordsArray.join(' - '));
-      
+      localStorage.setItem("records", recordsArray.join(" - "));
+
       isWin = true;
       showAllBombs();
       showResult("Win");
@@ -229,8 +230,8 @@ class Cell {
   createCellMarkup() {
     const cell = document.createElement("div");
     cell.classList.add("field__cell");
-    
-    if (width === 25) cell.classList.add('small');
+
+    if (width === 25) cell.classList.add("small");
 
     this.cell = cell;
 
@@ -248,6 +249,8 @@ class Cell {
 
       clicksCount++;
       this.onClick();
+
+      // localStorage.setItem("gameField", JSON.stringify(matrix));
     });
 
     return cell;

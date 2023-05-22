@@ -43,7 +43,7 @@ function generateHTML() {
   gameHeader.classList.add("game__header");
 
   const bombsCountElement = document.createElement("div");
-  bombsCountElement.className = "header__bombs-count display";
+  bombsCountElement.className = "header__bombs display";
   bombsCountElement.textContent = bombsCount;
 
   const restartButtonElement = document.createElement("div");
@@ -169,14 +169,18 @@ function generateHTML() {
   });
 
   const difficulty = localStorage.getItem("difficulty");
-  const options = [settingsOptionEasy, settingsOptionMedium, settingsOptionHard];
+  const options = [
+    settingsOptionEasy,
+    settingsOptionMedium,
+    settingsOptionHard,
+  ];
   options.forEach((option) => {
     if (difficulty) {
       option.classList.remove("active");
     }
     if (option.textContent.toLowerCase() === difficulty) {
-      option.classList.add('active');
-    } 
+      option.classList.add("active");
+    }
   });
 
   settingsDifficulty.append(
@@ -193,9 +197,9 @@ function generateHTML() {
 
   const input = settingsBombs.children[0];
   input.addEventListener("change", (event) => {
-    if (difficulty === 'easy' && input.value > 40) {
+    if (difficulty === "easy" && input.value > 40) {
       bombsCount = 40;
-    } else if (difficulty === 'medium' && input.value > 85) {
+    } else if (difficulty === "medium" && input.value > 85) {
       bombsCount = 85;
     } else {
       bombsCount = input.value;
@@ -206,8 +210,8 @@ function generateHTML() {
   const settingsRecords = document.createElement("button");
   settingsRecords.classList.add("settings__records");
   settingsRecords.textContent = "Show records";
-  settingsRecords.addEventListener('click', (event) => {
-    records.classList.add('opened');
+  settingsRecords.addEventListener("click", (event) => {
+    records.classList.add("opened");
   });
 
   const settingsTheme = document.createElement("div");
@@ -216,6 +220,41 @@ function generateHTML() {
   const settingsOptionLight = document.createElement("button");
   settingsOptionLight.className = "theme__option active";
   settingsOptionLight.textContent = "Light";
+  settingsOptionLight.addEventListener("click", (event) => {
+    page.classList.remove("dark");
+    gameBody.classList.remove("dark");
+    gameHeader.classList.remove("dark");
+    bombsCountElement.classList.remove("dark");
+    restartButtonElement.classList.remove("dark");
+    timerElement.classList.remove("dark");
+    fieldBody.classList.remove("dark");
+    resultBody.classList.remove("dark");
+    settingsBody.classList.remove("dark");
+    settingsOptionEasy.classList.remove("dark");
+    settingsOptionMedium.classList.remove("dark");
+    settingsOptionHard.classList.remove("dark");
+    settingsOptionDark.classList.remove("dark");
+    settingsOptionDark.classList.remove("active");
+    settingsOptionLight.className = "dark active";
+    input.classList.remove("dark");
+    recordsContent.classList.remove("dark");
+
+    const cells = document.querySelectorAll(".field__cell");
+    cells.forEach((cell) => {
+      cell.classList.remove("dark");
+    });
+
+    const recordsItems = document.querySelectorAll(".records__item");
+    recordsItems.forEach((item) => {
+      item.classList.remove("dark");
+    });
+
+    settingsButton.innerHTML =
+      '<img src="./img/settings.svg" alt="settings-icon">';
+    recordsClose.innerHTML = '<img src="./img/cross.svg" alt="cross">';
+
+    localStorage.setItem("theme", "light");
+  });
 
   const divider_3 = document.createElement("span");
   divider_3.textContent = " / ";
@@ -223,6 +262,41 @@ function generateHTML() {
   const settingsOptionDark = document.createElement("button");
   settingsOptionDark.classList.add("theme__option");
   settingsOptionDark.textContent = "Dark";
+  settingsOptionDark.addEventListener("click", (event) => {
+    page.classList.add("dark");
+    gameBody.classList.add("dark");
+    gameHeader.classList.add("dark");
+    bombsCountElement.classList.add("dark");
+    restartButtonElement.classList.add("dark");
+    timerElement.classList.add("dark");
+    fieldBody.classList.add("dark");
+    resultBody.classList.add("dark");
+    settingsBody.classList.add("dark");
+    settingsOptionEasy.classList.add("dark");
+    settingsOptionMedium.classList.add("dark");
+    settingsOptionHard.classList.add("dark");
+    settingsOptionLight.classList.add("dark");
+    settingsOptionLight.classList.remove("active");
+    settingsOptionDark.className = "dark active";
+    input.classList.add("dark");
+    recordsContent.classList.add("dark");
+
+    const cells = document.querySelectorAll(".field__cell");
+    cells.forEach((cell) => {
+      cell.classList.add("dark");
+    });
+
+    const recordsItems = document.querySelectorAll(".records__item");
+    recordsItems.forEach((item) => {
+      item.classList.add("dark");
+    });
+
+    settingsButton.innerHTML =
+      '<img src="./img/settings-dark.svg" alt="settings-icon">';
+    recordsClose.innerHTML = '<img src="./img/cross-dark.svg" alt="cross">';
+
+    localStorage.setItem("theme", "dark");
+  });
 
   settingsTheme.append(settingsOptionLight, divider_3, settingsOptionDark);
 
@@ -246,8 +320,8 @@ function generateHTML() {
   //-----------------------------------------------------------------------
   const records = document.createElement("section");
   records.classList.add("records");
-  records.addEventListener('click', (event) => {
-    if (!event.target.closest('records__content')) {
+  records.addEventListener("click", (event) => {
+    if (!event.target.closest("records__content")) {
       records.classList.remove("opened");
     }
   });
@@ -260,8 +334,7 @@ function generateHTML() {
 
   const recordsClose = document.createElement("div");
   recordsClose.classList.add("records__close");
-  recordsClose.innerHTML =
-    '<img src="./img/cross.svg" alt="cross">';
+  recordsClose.innerHTML = '<img src="./img/cross.svg" alt="cross">';
   recordsClose.addEventListener("click", (event) => {
     records.classList.remove("opened");
   });
@@ -269,8 +342,8 @@ function generateHTML() {
   const recordsList = document.createElement("ul");
   recordsList.classList.add("records__list");
   recordsArray.forEach((record, index) => {
-    const recordsItem = document.createElement('li');
-    recordsItem.classList.add('records__item');
+    const recordsItem = document.createElement("li");
+    recordsItem.classList.add("records__item");
     recordsItem.textContent = `${index + 1}. ${record} `;
     recordsList.appendChild(recordsItem);
   });
@@ -285,6 +358,80 @@ function generateHTML() {
   page.append(game, settings, records);
   wrapper.appendChild(page);
   document.body.insertAdjacentElement("afterbegin", wrapper);
+
+  const theme = localStorage.getItem("theme");
+  if (theme) {
+    switch (theme) {
+      case "light": {
+        page.classList.remove("dark");
+        gameBody.classList.remove("dark");
+        gameHeader.classList.remove("dark");
+        bombsCountElement.classList.remove("dark");
+        restartButtonElement.classList.remove("dark");
+        timerElement.classList.remove("dark");
+        fieldBody.classList.remove("dark");
+        resultBody.classList.remove("dark");
+        settingsBody.classList.remove("dark");
+        settingsOptionEasy.classList.remove("dark");
+        settingsOptionMedium.classList.remove("dark");
+        settingsOptionHard.classList.remove("dark");
+        settingsOptionDark.classList.remove("dark");
+        settingsOptionDark.classList.remove("active");
+        settingsOptionLight.className = "dark active";
+        input.classList.remove("dark");
+        recordsContent.classList.remove("dark");
+
+        const cells = document.querySelectorAll(".field__cell");
+        cells.forEach((cell) => {
+          cell.classList.remove("dark");
+        });
+
+        const recordsItems = document.querySelectorAll(".records__item");
+        recordsItems.forEach((item) => {
+          item.classList.remove("dark");
+        });
+
+        settingsButton.innerHTML =
+          '<img src="./img/settings.svg" alt="settings-icon">';
+        recordsClose.innerHTML = '<img src="./img/cross.svg" alt="cross">';
+        break;
+      }
+      case "dark": {
+        page.classList.add("dark");
+        gameBody.classList.add("dark");
+        gameHeader.classList.add("dark");
+        bombsCountElement.classList.add("dark");
+        restartButtonElement.classList.add("dark");
+        timerElement.classList.add("dark");
+        fieldBody.classList.add("dark");
+        resultBody.classList.add("dark");
+        settingsBody.classList.add("dark");
+        settingsOptionEasy.classList.add("dark");
+        settingsOptionMedium.classList.add("dark");
+        settingsOptionHard.classList.add("dark");
+        settingsOptionLight.classList.add("dark");
+        settingsOptionLight.classList.remove("active");
+        settingsOptionDark.className = "dark active";
+        input.classList.add("dark");
+        recordsContent.classList.add("dark");
+
+        const cells = document.querySelectorAll(".field__cell");
+        cells.forEach((cell) => {
+          cell.classList.add("dark");
+        });
+
+        const recordsItems = document.querySelectorAll(".records__item");
+        recordsItems.forEach((item) => {
+          item.classList.add("dark");
+        });
+
+        settingsButton.innerHTML =
+          '<img src="./img/settings-dark.svg" alt="settings-icon">';
+        recordsClose.innerHTML = '<img src="./img/cross-dark.svg" alt="cross">';
+        break;
+      }
+    }
+  }
 }
 
 export function setBombs(bombsCount, coordinates) {
@@ -317,13 +464,13 @@ export function newGame(width = 10, height = 10, bombsCount = 10) {
 
 function getLocalStorage() {
   const records = localStorage.getItem("records");
-  const recordsList = document.querySelector('.records__list');
+  const recordsList = document.querySelector(".records__list");
 
   if (records) {
-    recordsArray = records.split(' - ');
+    recordsArray = records.split(" - ");
     recordsArray.forEach((record, index) => {
-      const recordsItem = document.createElement('li');
-      recordsItem.classList.add('records__item');
+      const recordsItem = document.createElement("li");
+      recordsItem.classList.add("records__item");
       recordsItem.textContent = `${index + 1}. ${record}`;
       recordsList.appendChild(recordsItem);
     });
@@ -332,8 +479,8 @@ function getLocalStorage() {
   const difficulty = localStorage.getItem("difficulty");
 
   if (difficulty) {
-    const input = document.querySelector('.input');
-    
+    const input = document.querySelector(".input");
+
     switch (difficulty) {
       case "easy": {
         width = 10;
@@ -365,8 +512,8 @@ function getLocalStorage() {
   options.forEach((option) => {
     option.classList.remove("active");
     if (option.textContent.toLowerCase() === difficulty) {
-      option.classList.add('active');
-    } 
+      option.classList.add("active");
+    }
   });
 }
 
