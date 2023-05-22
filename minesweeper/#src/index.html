@@ -3,11 +3,14 @@
 	@@include('html/head.html', { "title":"Minesweeper" })
 	<body>
 		
-    <section class="settings">
+    <!-- <section class="settings">
+      <div class="settings__button"><img src="@img/settings.svg" alt="settings-icon"></div>
       <div class="settings__body">
         <div class="settings__difficulty">
-          <button class="difficulty__option active">Easy / </button>
-          <button class="difficulty__option">Medium / </button>
+          <button class="difficulty__option active">Easy</button>
+          <span> / </span>
+          <button class="difficulty__option">Medium</button>
+          <span> / </span>
           <button class="difficulty__option">Hard</button>
         </div>
         <div class="settings__bombs">
@@ -16,11 +19,12 @@
         </div>
         <button class="settings__records">Show records</button>
         <div class="settings__theme">
-          <button class="theme__option active">Light / </button>
+          <button class="theme__option active">Light</button>
+          <span> / </span>
           <button class="theme__option">Dark</button>
         </div>
       </div>
-    </section>
+    </section> -->
 		@@include('html/js.html',{})
 	</body>
 </html>

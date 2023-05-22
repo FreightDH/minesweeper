@@ -152,13 +152,16 @@
 
     cursor: pointer;
 
-    &.onclick {
-      border: 1px solid #808080;
-    }
-
     &.small {
       width: 17px;
       height: 17px;
+
+      font-size: 12px;
+
+      img {
+        width: 17px;
+        height: 17px;
+      }
     }
 
     img {

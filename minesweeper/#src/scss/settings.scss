@@ -2,16 +2,23 @@
   width: 200px;
 
   position: absolute;
-  bottom: 15px;
-  left: 15px;
-
-  border: 2px solid rgba($color: #000000, $alpha: .6);
-  border-radius: 3px;
-  background-color: #fff;
+  bottom: 40px;
+  left: 20px;
 
   font-size: rem(16);
   font-weight: 500;
   color: #000;
+
+  &__button {
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
 
   &__body {
     padding: 10px;
@@ -20,6 +27,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    border: 2px solid rgba($color: #000000, $alpha: .6);
+    border-radius: 3px;
+    background-color: #fff;
+
+    transition: all 0.3s ease 0s;
+    opacity: 0;
+
+    &.opened {
+      opacity: 1;
+    }
   }
 
   &__difficulty {
@@ -44,7 +62,7 @@
 
   &__option {
     &.active {
-      opacity: 1;
+      // opacity: 1 !important;
     }
   }
 }
