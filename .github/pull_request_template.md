@@ -1,6 +1,7 @@
 1. Task: [link](https://github.com/)
 2. Screenshot:
 3. Deploy: [link](https://github.com/)
+
 4. Done ... / deadline 23.05.2023
 5. Score: ... / 180
   
@@ -24,3 +25,4 @@
   - [ ] Implemented saving the latest 10 results using LocalStorage. (0/10)
   - [ ] Implemented saving the state of the game. (0/10)
   - [ ] Option to choose different themes for the game board (dark/light themes). (0/10)
+  - [ ] 
