@@ -91,6 +91,7 @@ export function resetServiceValues() {
   isWin = false;
   isLost = false;
   clicksCount = 0;
+  volume = 1;
   firstClick = true;
   timerStart = false;
   currentCountCells = cellsToWin;
