@@ -87,11 +87,10 @@ function playAudio(type) {
 
 export function resetServiceValues() {
   timerDisplay = document.querySelector(".header__timer");
-  bombsCountDisplay = document.querySelector(".header__bombs-count");
+  bombsCountDisplay = document.querySelector(".header__bombs");
   isWin = false;
   isLost = false;
   clicksCount = 0;
-  volume = 1;
   firstClick = true;
   timerStart = false;
   currentCountCells = cellsToWin;
