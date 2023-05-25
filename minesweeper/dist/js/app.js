@@ -1,11 +1,11 @@
 (() => {
     "use strict";
     const songs = {
-        click: "../files/sounds/click.mp3",
-        flag: "../files/sounds/flag.mp3",
-        "flag-off": "../files/sounds/flag-off.mp3",
-        win: "../files/sounds/win.mp3",
-        lose: "../files/sounds/lose.mp3"
+        click: "../../files/sounds/click.mp3",
+        flag: "../../files/sounds/flag.mp3",
+        "flag-off": "../../files/sounds/flag-off.mp3",
+        win: "../../files/sounds/win.mp3",
+        lose: "../../files/sounds/lose.mp3"
     };
     const sounds = songs;
     let firstClick = true;
@@ -58,6 +58,7 @@
     }
     function playAudio(type) {
         const audio = new Audio(sounds[type]);
+        audio.volume = volume;
         audio.play();
     }
     function resetServiceValues() {
@@ -196,6 +197,7 @@
     let bombsCount = 10;
     let cellsToWin = width * height - bombsCount;
     let recordsArray = [];
+    let volume = 1;
     const smileFaceTag = '<button><img src="./img/smile-face.png" alt="smile"></button>';
     function isBomb(cell) {
         return cell === 1 ? true : false;
@@ -408,7 +410,20 @@
             localStorage.setItem("theme", "dark");
         }));
         settingsTheme.append(settingsOptionLight, divider_3, settingsOptionDark);
-        settingsBody.append(settingsDifficulty, settingsBombs, settingsRecords, settingsTheme);
+        const settingsVolume = document.createElement("div");
+        settingsVolume.classList.add("settings__volume");
+        settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+        settingsVolume.addEventListener("click", (event => {
+            settingsVolume.classList.toggle("off");
+            if (settingsVolume.classList.contains("off")) {
+                settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';
+                volume = 0;
+            } else {
+                settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+                volume = 1;
+            }
+        }));
+        settingsBody.append(settingsDifficulty, settingsBombs, settingsRecords, settingsTheme, settingsVolume);
         settings.append(settingsButton, settingsBody);
         document.addEventListener("click", (event => {
             if (!event.target.closest(".settings__body") && !event.target.closest(".settings__button")) settingsBody.classList.remove("opened");

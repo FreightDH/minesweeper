@@ -27,6 +27,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    row-gap: 10px;
 
     border: 2px solid rgba($color: #000000, $alpha: 0.6);
     border-radius: 3px;
@@ -54,14 +55,21 @@
   &__bombs {
     width: 100%;
     text-align: center;
-    padding: 10px 0;
+    // padding: 10px 0;
   }
 
   &__records {
-    padding: 0px 0px 10px 0px;
+    // padding: 0px 0px 10px 0px;
   }
 
   &__theme {
+  }
+
+  &__volume {
+    img {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 .difficulty {
