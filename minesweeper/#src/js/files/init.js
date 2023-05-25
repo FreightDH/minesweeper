@@ -315,12 +315,16 @@ function generateHTML() {
 
   const settingsVolume = document.createElement('div');
   settingsVolume.classList.add('settings__volume');
-  settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+
+  if (volume === 1) {
+    settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+    console.log('work');
+  } else {
+    settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';
+  }
   
-  settingsVolume.addEventListener('click', (event) => {
-    settingsVolume.classList.toggle('off');
-   
-    if (settingsVolume.classList.contains('off')){
+  settingsVolume.addEventListener('click', (event) => { 
+    if (volume === 1){
       settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';
       volume = 0;
     } else {
@@ -411,7 +415,7 @@ function generateHTML() {
         input.classList.remove("dark");
         recordsContent.classList.remove("dark");
         
-        if (settingsVolume.classList.contains('off')) {
+        if (volume === 0) {
           settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';   
         } else {
           settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">'; 
@@ -451,7 +455,7 @@ function generateHTML() {
         input.classList.add("dark");
         recordsContent.classList.add("dark");
         
-        if (settingsVolume.classList.contains('off')) {
+        if (volume === 0) {
           settingsVolume.innerHTML = '<img src="./img/volume-off-dark.svg" alt="volume">';   
         } else {
           settingsVolume.innerHTML = '<img src="./img/volume-dark.svg" alt="volume">'; 

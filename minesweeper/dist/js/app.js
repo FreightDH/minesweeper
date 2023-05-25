@@ -63,11 +63,10 @@
     }
     function resetServiceValues() {
         timerDisplay = document.querySelector(".header__timer");
-        bombsCountDisplay = document.querySelector(".header__bombs-count");
+        bombsCountDisplay = document.querySelector(".header__bombs");
         isWin = false;
         isLost = false;
         clicksCount = 0;
-        volume = 1;
         firstClick = true;
         timerStart = false;
         currentCountCells = cellsToWin;
@@ -415,10 +414,12 @@
         settingsTheme.append(settingsOptionLight, divider_3, settingsOptionDark);
         const settingsVolume = document.createElement("div");
         settingsVolume.classList.add("settings__volume");
-        settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+        if (volume === 1) {
+            settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+            console.log("work");
+        } else settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';
         settingsVolume.addEventListener("click", (event => {
-            settingsVolume.classList.toggle("off");
-            if (settingsVolume.classList.contains("off")) {
+            if (volume === 1) {
                 settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';
                 volume = 0;
             } else {
@@ -484,7 +485,7 @@
                 settingsOptionLight.className = "theme__option dark active";
                 input.classList.remove("dark");
                 recordsContent.classList.remove("dark");
-                if (settingsVolume.classList.contains("off")) settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">'; else settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+                if (volume === 0) settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">'; else settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
                 const cells = document.querySelectorAll(".field__cell");
                 cells.forEach((cell => {
                     cell.classList.remove("dark");
@@ -517,7 +518,7 @@
                 settingsOptionDark.className = "theme__option dark active";
                 input.classList.add("dark");
                 recordsContent.classList.add("dark");
-                if (settingsVolume.classList.contains("off")) settingsVolume.innerHTML = '<img src="./img/volume-off-dark.svg" alt="volume">'; else settingsVolume.innerHTML = '<img src="./img/volume-dark.svg" alt="volume">';
+                if (volume === 0) settingsVolume.innerHTML = '<img src="./img/volume-off-dark.svg" alt="volume">'; else settingsVolume.innerHTML = '<img src="./img/volume-dark.svg" alt="volume">';
                 const cells = document.querySelectorAll(".field__cell");
                 cells.forEach((cell => {
                     cell.classList.add("dark");
