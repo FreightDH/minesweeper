@@ -6,6 +6,7 @@ import {
   cellsToWin,
   setBombs,
   recordsArray,
+  volume,
 } from "./init.js";
 
 import songs from "./sounds.js";
@@ -80,6 +81,7 @@ function showResult(status) {
 
 function playAudio(type) {
   const audio = new Audio(songs[type]);
+  audio.volume = volume;
   audio.play();
 }
 

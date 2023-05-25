@@ -7,6 +7,7 @@ export let height = 10;
 export let bombsCount = 10;
 export let cellsToWin = width * height - bombsCount;
 export let recordsArray = [];
+export let volume = 1;
 
 const smileFaceTag =
   '<button><img src="./img/smile-face.png" alt="smile"></button>';
@@ -300,11 +301,28 @@ function generateHTML() {
 
   settingsTheme.append(settingsOptionLight, divider_3, settingsOptionDark);
 
+  const settingsVolume = document.createElement('div');
+  settingsVolume.classList.add('settings__volume');
+  settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+  
+  settingsVolume.addEventListener('click', (event) => {
+    settingsVolume.classList.toggle('off');
+   
+    if (settingsVolume.classList.contains('off')){
+      settingsVolume.innerHTML = '<img src="./img/volume-off.svg" alt="volume">';
+      volume = 0;
+    } else {
+      settingsVolume.innerHTML = '<img src="./img/volume.svg" alt="volume">';
+      volume = 1;
+    }
+  });
+
   settingsBody.append(
     settingsDifficulty,
     settingsBombs,
     settingsRecords,
-    settingsTheme
+    settingsTheme, 
+    settingsVolume,
   );
 
   settings.append(settingsButton, settingsBody);
