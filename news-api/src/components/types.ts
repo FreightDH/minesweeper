@@ -1,6 +1,6 @@
 export type Data = DataSources | DataNews | undefined;
 
-type DataSources = {
+export type DataSources = {
   status: string;
   sources: Source[];
 };
@@ -16,7 +16,7 @@ export type Source = {
   country: string;
 };
 
-type DataNews = {
+export type DataNews = {
   status: string;
   totalResults: number;
   articles: Article[];
