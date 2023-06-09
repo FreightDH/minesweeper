@@ -1,11 +1,12 @@
-export type Data =
-  | {
-      status: string;
-      sources: Source;
-    }
-  | undefined;
+export type Data = DataSources | DataNews | undefined;
 
-type Source = {
+type DataSources = {
+  status: string;
+  sources: Source[];
+};
+
+// record <string, string> ??
+export type Source = {
   id: string;
   name: string;
   description: string;
@@ -13,6 +14,24 @@ type Source = {
   category: string;
   language: string;
   country: string;
+};
+
+type DataNews = {
+  status: string;
+  totalResults: number;
+  articles: News[];
+};
+
+// record <string, string>  & source: record <string, string> ??
+type News = {
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  source: Record<string, string>;
+  title: string;
+  url: string;
+  urlToImage: string;
 };
 
 export type Endpoint = 'sources' | 'everything';
