@@ -1,31 +1,34 @@
+import { Data, Endpoint } from '../types';
+
 class Loader {
-  constructor(baseLink, options) {
+  constructor(private baseLink: string, private options: Record<string, string>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
-  getResp(
-    { endpoint, options = {} },
-    callback = () => {
+  protected getResp(
+    { endpoint, options = {} }: { endpoint: Endpoint; options: Record<string, string> },
+    callback = (): void => {
       console.error('No callback for GET response');
     },
-  ) {
+  ): void {
     this.load('GET', endpoint, callback, options);
   }
 
-  errorHandler(res) {
+  private errorHandler(res: Response): Response | never {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
+      if (res.status === 401 || res.status === 404) {
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+      }
       throw Error(res.statusText);
     }
 
     return res;
   }
 
-  makeUrl(options, endpoint) {
-    const urlOptions = { ...this.options, ...options };
-    let url = `${this.baseLink}${endpoint}?`;
+  private makeUrl(options: Record<string, string>, endpoint: Endpoint): string {
+    const urlOptions: Record<string, string> = { ...this.options, ...options };
+    let url: string = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key) => {
       url += `${key}=${urlOptions[key]}&`;
@@ -34,7 +37,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method, endpoint, callback, options = {}) {
+  private load(method: string, endpoint: Endpoint, callback: (data: Data) => void, options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
