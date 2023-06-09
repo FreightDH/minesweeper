@@ -19,11 +19,11 @@ export type Source = {
 type DataNews = {
   status: string;
   totalResults: number;
-  articles: News[];
+  articles: Article[];
 };
 
 // record <string, string>  & source: record <string, string> ??
-type News = {
+export type Article = {
   author: string;
   content: string;
   description: string;
