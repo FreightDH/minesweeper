@@ -1,7 +1,9 @@
-export type Data = {
-  status: string;
-  sources: Source;
-};
+export type Data =
+  | {
+      status: string;
+      sources: Source;
+    }
+  | undefined;
 
 type Source = {
   id: string;
