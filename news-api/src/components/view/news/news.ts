@@ -19,8 +19,8 @@ class News {
       const newsSource: Element = newsClone.querySelector('.news__description-source')!;
       const newsContent: Element = newsClone.querySelector('.news__description-content')!;
       const newsReadMore: Element = newsClone.querySelector('.news__read-more a')!;
-      newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
 
+      newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
       newsAuthor.textContent = item.author || item.source.name;
       newsDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
       newsTitle.textContent = item.title;

@@ -11,17 +11,14 @@ class Sources {
         const sourceClone: DocumentFragment = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
         const sourceItemName = sourceClone.querySelector('.source__item-name');
 
-        if (sourceItemName) {
-          sourceItemName.textContent = item.name;
-        } else {
-          throw new Error("Class 'source__item-name' doesn't exist.");
-        }
+        if (sourceItemName) sourceItemName.textContent = item.name;
+        else throw new Error("Class 'source__item-name' doesn't exist.");
 
         sourceClone.querySelector('.source__item')?.setAttribute('data-source-id', item.id);
 
         fragment.append(sourceClone);
       } else {
-        throw new Error("ID sourceItemTemp doesn't exist..");
+        throw new Error("ID sourceItemTemp doesn't exist.");
       }
     });
 
