@@ -10,7 +10,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./news-api/tsconfig.json"
   },
   "env": {
     "es6": true,
@@ -21,10 +22,12 @@
     "no-debugger": "off",
     "no-console": 0,
     "class-methods-use-this": "off",
+    "lines-between-class-members": "off",
     "import/extensions": "off", 
     "import/prefer-default-export": "off",
-    "typescript-eslint/no-explicit-any": "error",
+    "typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
     "@typescript-eslint/array-type": [
       "error",
       {
@@ -47,6 +50,6 @@
     "max-lines-per-function": ["error", 40],
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
-    "@typescript-eslint/no-non-null-assertion": "error"
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }

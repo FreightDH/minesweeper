@@ -1,5 +1,5 @@
 import AppController from '../controller/controller';
-import { AppView } from '../view/appView';
+import AppView from '../view/appView';
 import { Data, DataNews, DataSources } from '../types';
 
 class App {
@@ -11,7 +11,7 @@ class App {
     this.view = new AppView();
   }
 
-  start() {
+  public start(): void {
     const sources: Element | null = document.querySelector('.sources');
 
     if (sources) {
