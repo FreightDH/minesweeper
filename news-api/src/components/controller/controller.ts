@@ -19,7 +19,9 @@ class AppController extends AppLoader {
       if (target && target.classList.contains('source__item')) {
         const sourceId: string | null = target.getAttribute('data-source-id');
 
-        if (sourceId && newsContainer.getAttribute('data-source') !== sourceId) {
+        if (!sourceId) throw new Error(`${target} doesn't contains attribute data-source-id`);
+
+        if (newsContainer.getAttribute('data-source') !== sourceId) {
           newsContainer.setAttribute('data-source', sourceId);
 
           super.getResp(
@@ -31,8 +33,6 @@ class AppController extends AppLoader {
             },
             callback,
           );
-        } else {
-          throw new Error(`${target} doesn't contains attribute data-source-id`);
         }
         return;
       }
