@@ -11,7 +11,7 @@ class App {
     this.view = new AppView();
   }
 
-  public start(): void {
+  public start(): void | never {
     const sources: Element | null = document.querySelector('.sources');
 
     if (sources) {
