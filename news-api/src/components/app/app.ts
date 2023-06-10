@@ -18,6 +18,8 @@ class App {
       sources.addEventListener('click', (e: Event) =>
         this.controller.getNews(e, (data: Data) => this.view.drawNews(data as DataNews)),
       );
+    } else {
+      throw new Error("Class sources doesn't exists.");
     }
 
     this.controller.getSources((data: Data) => this.view.drawSources(data as DataSources));
