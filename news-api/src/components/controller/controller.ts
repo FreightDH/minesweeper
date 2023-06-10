@@ -11,7 +11,7 @@ class AppController extends AppLoader {
     );
   }
 
-  public getNews(e: Event, callback: (data: Data) => void): void | undefined {
+  public getNews(e: Event, callback: (data: Data) => void): void {
     let target: Element = e.target as Element;
     const newsContainer: Element = e.currentTarget as Element;
 
@@ -31,6 +31,8 @@ class AppController extends AppLoader {
             },
             callback,
           );
+        } else {
+          throw new Error(`${target} doesn't contains attribute data-source-id`);
         }
         return;
       }
