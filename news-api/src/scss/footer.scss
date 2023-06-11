@@ -9,8 +9,13 @@
 
   &__copyright {
     color: rgba(255, 255, 255, 0.6);
-    font-size: 18px;
+    font-size: 16px;
     text-transform: capitalize;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin: 0px 0px 5px 0px;
+    }
 
     @media (max-width: $mobileSmall) {
       font-size: rem(14);
