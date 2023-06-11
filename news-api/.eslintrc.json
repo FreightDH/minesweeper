@@ -25,7 +25,7 @@
     "lines-between-class-members": "off",
     "import/extensions": "off", 
     "import/prefer-default-export": "off",
-    "typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/lines-between-class-members": "off",
     "@typescript-eslint/array-type": [
