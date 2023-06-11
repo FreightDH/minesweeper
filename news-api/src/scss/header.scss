@@ -1,0 +1,21 @@
+//--------------------------------------------------------------
+.header {
+  padding: 50px 0px 0px 25px;
+
+  @media (max-width: $mobileSmall) {
+    padding: 50px 0px 0px 0px;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: rem(40);
+    font-weight: 700;
+
+    @media (max-width: $mobileSmall) {
+      font-size: rem(35);
+      text-align: center;
+    }
+  }
+}
+
+//--------------------------------------------------------------
