@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,500,600,700" rel="stylesheet">
   <title>NewsPortal</title>
 </head>
 
 <body>
-  <header>
-    <h1>News Portal</h1>
-  </header>
-  <main>
-    <div class="sources buttons"></div>
-    <div class="news"></div>
-  </main>
-  <footer>
-    <p class="copyright">
-      Copyright <a href="https://newsapi.org">NewsAPI</a>
-    </p>
-  </footer>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header__container">
+        <h1 class="header__title">News Portal</h1>
+      </div>
+    </header>
+    <main class="content">
+      <div class="sources buttons"></div>
+      <div class="news"></div>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <p class="footer__copyright">
+          <a href="https://github.com/FreightDH">FreightDH</a> © 2023 All Rights Reserved | <a
+            href="https://rs.school/js/">RSSchool</a>
+          <!-- Copyright <a href="https://newsapi.org">NewsAPI</a> -->
+        </p>
+      </div>
+    </footer>
+  </div>
 
   <template id="sourceItemTemp">
     <div class="source__item">
