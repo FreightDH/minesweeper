@@ -1,4 +1,3 @@
-import './news.css';
 import { Article } from '../../types';
 
 class News {
@@ -30,7 +29,7 @@ class News {
       fragment.append(newsClone);
     });
 
-    const newsElement: Element = document.querySelector('.news')!;
+    const newsElement: Element = document.querySelector('.news__body')!;
 
     newsElement.innerHTML = '';
     newsElement.appendChild(fragment);
