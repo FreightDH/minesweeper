@@ -18,6 +18,7 @@ class AppView {
 
   public drawSources(data: DataSources): void {
     const values: Source[] = data?.sources ? data?.sources : [];
+    this.sources.generateSourceFilter();
     this.sources.draw(values);
   }
 }

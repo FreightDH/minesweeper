@@ -1,6 +1,6 @@
 //--------------------------------------------------------------
 .header {
-  padding: 50px 0px 0px 25px;
+  padding: 25px 0px 0px 0px;
 
   @media (max-width: $mobileSmall) {
     padding: 50px 0px 0px 0px;
@@ -10,6 +10,7 @@
     color: #fff;
     font-size: rem(40);
     font-weight: 700;
+    text-align: center;
 
     @media (max-width: $mobileSmall) {
       font-size: rem(35);

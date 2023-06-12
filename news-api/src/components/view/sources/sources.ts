@@ -1,6 +1,27 @@
 import { Source } from '../../types';
 
 class Sources {
+  public generateSourceFilter(): void {
+    const fragment: DocumentFragment = document.createDocumentFragment();
+    const sourcesFilter = document.querySelector('.sources__filter')!;
+    const filterButtonAll: Element = document.createElement('div');
+
+    filterButtonAll.className = 'filter__button button--all';
+    filterButtonAll.textContent = 'All';
+
+    fragment.append(filterButtonAll);
+
+    for (let i = 65; i < 91; i++) {
+      const filterButton: Element = document.createElement('div');
+      filterButton.classList.add('filter__button');
+      filterButton.textContent = String.fromCharCode(i);
+      fragment.append(filterButton);
+    }
+
+    sourcesFilter.innerHTML = '';
+    sourcesFilter.append(fragment);
+  }
+
   public draw(data: Source[]): void {
     const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sources__item--template');
@@ -21,7 +42,7 @@ class Sources {
       }
     });
 
-    document.querySelector('.sources__body')?.append(fragment);
+    // document.querySelector('.sources__body')?.append(fragment);
   }
 }
 

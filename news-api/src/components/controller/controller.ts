@@ -16,7 +16,7 @@ class AppController extends AppLoader {
     const newsContainer: Element = e.currentTarget as Element;
 
     while (target !== newsContainer) {
-      if (target && target.classList.contains('source__item')) {
+      if (target && target.classList.contains('sources__item')) {
         const sourceId: string | null = target.getAttribute('data-source-id');
 
         if (!sourceId) throw new Error(`${target} doesn't contains attribute data-source-id`);

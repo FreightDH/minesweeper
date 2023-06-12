@@ -1,14 +1,30 @@
 .sources {
+  margin: 0 auto;
   padding: 25px 0px 0px 0px;
 
   &__body {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // flex-wrap: wrap;
     gap: 1em;
   }
 
+  &__filter {
+    display: flex;
+    gap: 7px;
+  }
+
   &__item {
+    max-width: 300px;
+
+    flex: 0 0 16.666%;
     padding: 1em 2em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: none;
     border: 2px solid #30c5ff;
@@ -25,6 +41,36 @@
       color: #69db7e;
       box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
       transform: translateY(-0.25em);
+    }
+  }
+}
+.filter {
+  &__button {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #30c5ff;
+    transition: all 0.3s ease 0s;
+
+    color: #70d6ff;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    &:hover {
+      border-color: #3fcc59;
+      color: #69db7e;
+      box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+      transform: translateY(-0.25em);
+    }
+
+    &.button--all {
+      width: 50px;
     }
   }
 }
