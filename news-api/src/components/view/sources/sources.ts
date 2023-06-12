@@ -9,8 +9,6 @@ class Sources {
     filterButtonAll.className = 'filter__button button--all';
     filterButtonAll.textContent = 'All';
 
-    // fragment.append(filterButtonAll);
-
     for (let i = 65; i < 91; i++) {
       const filterButton: Element = document.createElement('div');
       filterButton.classList.add('filter__button');

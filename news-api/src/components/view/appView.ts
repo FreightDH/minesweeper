@@ -23,7 +23,7 @@ class AppView {
     const letter = target.textContent?.toLowerCase();
 
     if (letter !== 'all') {
-      values = values.filter((source) => source.id[0] === target.textContent?.toLowerCase());
+      values = values.filter((source) => source.id[0] === letter);
     }
 
     this.sources.draw(values);
