@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,500,600,700" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>NewsPortal</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header__container">
+        <h1 class="header__title">News Portal</h1>
+      </div>
+    </header>
+    <main class="content">
+      <section class="sources">
+        <div class="sources__container">
+          <div class="sources__body">
+            <div class="sources__filter">
+            </div>
+            <div class="sources__sources">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="news">
+        <div class="news__container">
+          <div class="news__body">
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <p class="footer__copyright">
+          Copyright © <a href="https://newsapi.org">NewsAPI</a>
+        </p>
+        <p class="footer__copyright">
+          <a href="https://github.com/FreightDH">FreightDH</a> © 2023 All Rights Reserved |
+          <a href="https://rs.school/js/">RSSchool</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <template id="sources__item--template">
+    <div class="sources__item">
+      <span class="item__name"></span>
+    </div>
+  </template>
+
+  <template id="news__item--template">
+    <div class="news__item">
+      <div class="item__meta">
+        <div class="meta__photo"></div>
+        <ul class="meta__details">
+          <li class="meta__author"></li>
+          <li class="meta__date"></li>
+        </ul>
+      </div>
+      <div class="item__description">
+        <h2 class="description__title"></h2>
+        <h3 class="description__source"></h3>
+        <p class="description__content"></p>
+        <div class="description__readmore"><a href="#">Read More</a></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
