@@ -1,10 +1,9 @@
-import './sources.css';
 import { Source } from '../../types';
 
 class Sources {
   public draw(data: Source[]): void {
     const fragment: DocumentFragment = document.createDocumentFragment();
-    const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#source__item--template');
+    const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sources__item--template');
 
     data.forEach((item) => {
       if (sourceItemTemp) {
@@ -14,7 +13,7 @@ class Sources {
         if (sourceItemName) sourceItemName.textContent = item.name;
         else throw new Error("Class 'item__name' doesn't exist.");
 
-        sourceClone.querySelector('.source__item')?.setAttribute('data-source-id', item.id);
+        sourceClone.querySelector('.sources__item')?.setAttribute('data-source-id', item.id);
 
         fragment.append(sourceClone);
       } else {
@@ -22,7 +21,7 @@ class Sources {
       }
     });
 
-    document.querySelector('.sources')?.append(fragment);
+    document.querySelector('.sources__body')?.append(fragment);
   }
 }
 
