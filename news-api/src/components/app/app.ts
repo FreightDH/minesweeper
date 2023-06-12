@@ -12,7 +12,14 @@ class App {
   }
 
   public start(): void | never {
-    const sources: Element | null = document.querySelector('.sources');
+    const sources: Element | null = document.querySelector('.sources__sources');
+    const sourcesFilter: Element | null = document.querySelector('.sources__filter');
+
+    if (sourcesFilter) {
+      sourcesFilter.addEventListener('click', (e: Event) => {
+        this.controller.getSources((data: Data) => this.view.drawSources(e, data as DataSources));
+      });
+    }
 
     if (sources) {
       sources.addEventListener('click', (e: Event) =>
@@ -21,8 +28,6 @@ class App {
     } else {
       throw new Error("Class sources doesn't exists.");
     }
-
-    this.controller.getSources((data: Data) => this.view.drawSources(data as DataSources));
   }
 }
 

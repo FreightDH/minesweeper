@@ -9,7 +9,7 @@ class Sources {
     filterButtonAll.className = 'filter__button button--all';
     filterButtonAll.textContent = 'All';
 
-    fragment.append(filterButtonAll);
+    // fragment.append(filterButtonAll);
 
     for (let i = 65; i < 91; i++) {
       const filterButton: Element = document.createElement('div');
@@ -19,7 +19,7 @@ class Sources {
     }
 
     sourcesFilter.innerHTML = '';
-    sourcesFilter.append(fragment);
+    sourcesFilter.append(fragment, filterButtonAll);
   }
 
   public draw(data: Source[]): void {
@@ -42,7 +42,9 @@ class Sources {
       }
     });
 
-    // document.querySelector('.sources__body')?.append(fragment);
+    const sources = document.querySelector('.sources__sources')!;
+    sources.innerHTML = '';
+    sources.append(fragment);
   }
 }
 
