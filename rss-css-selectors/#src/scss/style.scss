@@ -12,7 +12,7 @@
 //<Шрифт по умолчанию>
 $fontFamily: "Exo 2";
 $fontSize: rem(14);
-$mainColor: rgba(255, 255, 255, 0.3);
+$mainColor: rgba(255, 255, 255, 0.4);
 //</Шрифт по умолчанию>
 //</ШРИФТЫ>
 
@@ -20,9 +20,9 @@ $mainColor: rgba(255, 255, 255, 0.3);
 // Минимальная ширина страницы
 $minWidth: 320;
 // Ширина макета
-$maxWidth: 1170;
+$maxWidth: 1920;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 1170;
+$maxWidthContainer: 0;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
 $containerPadding: 30;
@@ -101,6 +101,7 @@ body {
   width: 100%;
   min-height: 100%;
   overflow: hidden;
+  background-color: #231f1a;
   // Прижимаем footer
   /*
 	display: flex;
@@ -114,7 +115,7 @@ body {
 //</ОБОЛОЧКА>
 
 //<ПОДЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
-// @import "header";
+@import "header";
 // @import "home";
 // @import "footer";
 //</ПОДЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>

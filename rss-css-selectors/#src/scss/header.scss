@@ -1,4 +1,26 @@
 //--------------------------------------------------------------
+.header {
+  padding: 15px 0px 0px 0px;
+
+  &__body {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  &__logo {
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__title {
+    font-size: rem(16);
+    line-height: 1;
+  }
+}
 
 //--------------------------------------------------------------
 // Меню бургер
