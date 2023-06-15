@@ -101,15 +101,13 @@ body {
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-  background-color: #231f1a;
+  background-color: #2e2a23;
   // Прижимаем footer
-  /*
-	display: flex;
-	flex-direction: column;
-	> main {
-		flex: 1 1 auto;
-	} 
-	*/
+  display: flex;
+  flex-direction: column;
+  > main {
+    flex: 1 1 auto;
+  }
   // &.loaded {}
 }
 //</ОБОЛОЧКА>
@@ -117,7 +115,7 @@ body {
 //<ПОДЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
 @import "header";
 // @import "home";
-// @import "footer";
+@import "footer";
 //</ПОДЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>

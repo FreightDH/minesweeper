@@ -1,3 +1,22 @@
 //--------------------------------------------------------------
+.footer {
+  padding: 15px 0;
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__copyright {
+    font-size: rem(16);
+    @include adaptiveValue("font-size", 16, 13);
+
+    a {
+      text-decoration: underline;
+      color: rgba($color: #fff, $alpha: 0.7);
+    }
+  }
+}
 
 //--------------------------------------------------------------
