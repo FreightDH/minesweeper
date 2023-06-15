@@ -4,10 +4,14 @@
 
 <body>
   <div class="wrapper">
-    @@include('html/header.html',{})
-    <main class="page">
-    </main>
-    @@include('html/footer.html',{})
+    <div class="wrapper__column column--left">
+      @@include('html/header.html',{})
+      <main class="page">
+      </main>
+      @@include('html/footer.html',{})
+    </div>
+    <div class="wrapper__column column--right">
+    </div>
   </div>
   @@include('html/js.html',{})
 </body>
