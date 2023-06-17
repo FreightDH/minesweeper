@@ -11,6 +11,74 @@
       @@include('html/footer.html',{})
     </div>
     <div class="wrapper__column column--right">
+      <aside class="sidebar">
+        <div class="sidebar__header">
+          <div class="header__level">Level <span class="level__current">1</span> of 10</div>
+          <div class="header__arrows">
+            <button class="arrows__button button--prev"></button>
+            <button class="arrows__button"></button>
+          </div>
+          <div class="header__menu menu">
+            <button type="button" class="menu__icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <nav class="menu__body">
+              <h3 class="menu__title">Choose a level</h3>
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="" class="menu__link">
+                    <span class="link__check"></span>
+                    <span class="link__number">1</span>
+                    <span class="link__name">A</span>
+                  </a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">
+                    <span class="link__check"></span>
+                    <span class="link__number">2</span>
+                    <span class="link__name">A</span>
+                  </a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">
+                    <span class="link__check"></span>
+                    <span class="link__number">3</span>
+                    <span class="link__name">#id</span>
+                  </a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">
+                    <span class="link__check"></span>
+                    <span class="link__number">4</span>
+                    <span class="link__name">A B</span>
+                  </a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">
+                    <span class="link__check"></span>
+                    <span class="link__number">5</span>
+                    <span class="link__name">#id A</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="sidebar__progress">
+          <div class="progress__progress"></div>
+        </div>
+        <div class="sidebar__description">
+          <h2 class="description__title">Type Selector</h2>
+          <p class="description__text">Select elements by their type</p>
+          <div class="description__syntax">A</div>
+          <p class="description__hint">Selects all elements of type <span class="code">A</span>. Type refers to the type
+            of tag, so <span class="code tag">div</span>, <span class="code tag">p</span> and <span
+              class="code tag">ul</span>
+            are all different element types.</p>
+        </div>
+      </aside>
     </div>
   </div>
   @@include('html/js.html',{})

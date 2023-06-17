@@ -11,7 +11,7 @@
 
 //<Шрифт по умолчанию>
 $fontFamily: "Exo 2";
-$fontSize: rem(14);
+$fontSize: rem(16);
 $mainColor: rgba(255, 255, 255, 0.4);
 //</Шрифт по умолчанию>
 //</ШРИФТЫ>
@@ -118,8 +118,8 @@ body {
     }
 
     &.column--right {
-      flex: 0 0 20%;
-      background-color: #221e18;
+      flex: 0 0 375px;
+      background-color: #191613;
     }
   }
 }
@@ -127,7 +127,7 @@ body {
 
 //<ПОДЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
 @import "header";
-// @import "home";
+@import "home";
 @import "footer";
 //</ПОДЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
 

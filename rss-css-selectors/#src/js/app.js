@@ -6,4 +6,4 @@ import '../ts/app.ts';
 // Проверка поддержки webp, добавление класса webp или no-webp для HTML
 myFunctions.isWebp();
 // Модуль для работы с меню-бургер
-// menuFunctions.menuInit();
+menuFunctions.menuInit();

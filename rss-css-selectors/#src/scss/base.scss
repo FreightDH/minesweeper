@@ -3,6 +3,27 @@
 // Кастомные теги
 @import "base/tags";
 
+// Общие стили
+.code {
+  margin: 0 3px;
+  padding: 3px 6px 3px 6px;
+  background-color: rgba($color: #fff, $alpha: 0.1);
+
+  color: rgba($color: #fff, $alpha: 0.6);
+  font-size: 13px;
+  font-family: menlo, monospace;
+}
+
+.tag {
+  &::before {
+    content: "<";
+  }
+
+  &::after {
+    content: ">";
+  }
+}
+
 // Стили для отзывчивых картинок (IBG)
 // Сниппет (HTML): ibg (div c картинкой и классами)
 // Сниппет (HTML): ibga (a c картинкой и классами)
