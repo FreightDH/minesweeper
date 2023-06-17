@@ -9,7 +9,6 @@
   }
 
   &__copyright {
-    font-size: rem(16);
     @include adaptiveValue("font-size", 16, 13);
 
     a {
