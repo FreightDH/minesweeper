@@ -1,11 +1,32 @@
 plate {
+  width: 100px;
+  height: 100px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+
   background-color: #fff;
   border-radius: 50%;
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.1);
+
+  position: relative;
+  border-bottom: 5px solid #ddd;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+
+    background-color: #fff;
+    border-top: 6px solid #ccc;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
 }
 
 apple {
