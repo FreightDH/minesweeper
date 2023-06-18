@@ -24,6 +24,66 @@
   }
 }
 
+.select {
+  transform-origin: bottom;
+  animation: needToSelect 1s infinite;
+  animation-delay: 0s, 0.5s;
+}
+
+.init {
+  animation: showIn 0.2s;
+}
+
+.done {
+  animation: showOut 0.2s 1;
+  transform: translateY(-600px);
+}
+//--------------------------------------------------------------
+// Анимация покачивания
+@keyframes needToSelect {
+  0% {
+    transform: skew(4deg, 0deg) scaleX(1);
+  }
+  10% {
+    transform: skew(1deg, 0deg) scaleY(0.9);
+  }
+  50% {
+    transform: skew(-4deg, 0deg) scaleX(1);
+  }
+  60% {
+    transform: skew(-1deg, 0deg) scaleY(0.9);
+  }
+  100% {
+    transform: skew(4deg, 0deg) scaleX(1);
+  }
+}
+
+// Анимация появления
+@keyframes showIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+    transform-origin: center;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Анимация пропадания
+@keyframes showOut {
+  0% {
+    transform: translateY(0px) rotate3d(0, 0, 0, 0deg);
+  }
+  100% {
+    transform: translateY(-600px) rotate3d(0, 0, 0, 0deg);
+  }
+}
+
 // Стили для отзывчивых картинок (IBG)
 // Сниппет (HTML): ibg (div c картинкой и классами)
 // Сниппет (HTML): ibga (a c картинкой и классами)
