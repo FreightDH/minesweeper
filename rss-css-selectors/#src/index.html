@@ -7,6 +7,29 @@
     <div class="wrapper__column column--left">
       @@include('html/header.html',{})
       <main class="page">
+        <section class="content">
+          <div class="content__container">
+            <div class="content__body">
+              <h2 class="content__task">Select the plates</h2>
+              <button class="content__help">Help, I'm stuck!</button>
+              <div class="content__table">
+                <div class="table__wrapper">
+                  <div class="table__surface">
+                    <div class="surface__content">
+                      <plate class="select"></plate>
+                      <plate class="select"></plate>
+                    </div>
+                  </div>
+                </div>
+                <div class="table__edge">
+                  <div class="table__leg"></div>
+                  <div class="table__leg"></div>
+                </div>
+              </div>
+              <div class="content__code"></div>
+            </div>
+          </div>
+        </section>
       </main>
       @@include('html/footer.html',{})
     </div>
