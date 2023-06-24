@@ -2,7 +2,8 @@ import { Article } from '../../types';
 
 class News {
   public draw(data: Article[]): void {
-    const news = data.length >= 10 ? data.filter((_item, index) => index < 10) : data;
+    const MAX_LENGTH = 10;
+    const news = data.length > MAX_LENGTH ? data.slice(0, 10) : data;
     const fragment = document.createDocumentFragment();
     const newsItemTemp: HTMLTemplateElement = document.querySelector('#news__item--template')!;
 
