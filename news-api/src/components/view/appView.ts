@@ -1,10 +1,10 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { DataSources, DataNews, Source, Article } from '../types';
+import { DataSources, DataNews } from '../types';
 
 class AppView {
-  public news: News;
-  public sources: Sources;
+  public news;
+  public sources;
 
   constructor() {
     this.news = new News();
@@ -13,13 +13,13 @@ class AppView {
   }
 
   public drawNews(data: DataNews): void {
-    const values: Article[] = data?.articles ? data?.articles : [];
+    const values = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
   public drawSources(e: Event, data: DataSources): void {
-    let values: Source[] = data?.sources ? data?.sources : [];
-    const target: Element = e.target as Element;
+    let values = data?.sources ? data?.sources : [];
+    const target = e.target as HTMLElement;
     const letter = target.textContent?.toLowerCase();
 
     if (letter !== 'all') {
