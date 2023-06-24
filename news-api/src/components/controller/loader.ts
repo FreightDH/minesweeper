@@ -8,7 +8,7 @@ class Loader {
 
   protected getResp(
     { endpoint, options = {} }: { endpoint: Endpoint; options?: Record<string, string> },
-    callback: (data?: Data) => void,
+    callback: <T>(data: T) => void,
   ): void {
     this.load('GET', endpoint, callback, options);
   }
@@ -38,7 +38,7 @@ class Loader {
   private load(
     method: string,
     endpoint: Endpoint,
-    callback: (data: Data) => void,
+    callback: <T>(data: T) => void,
     options: Record<string, string> = {},
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })

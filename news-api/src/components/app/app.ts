@@ -16,11 +16,11 @@ class App {
     const sourcesFilter = document.querySelector('.sources__filter')!;
 
     sourcesFilter.addEventListener('click', (e: Event) => {
-      this.controller.getSources((data: Data) => this.view.drawSources(e, data as DataSources));
+      this.controller.getSources((data) => this.view.drawSources(e, data as DataSources));
     });
 
     sources.addEventListener('click', (e: Event) =>
-      this.controller.getNews(e, (data: Data) => this.view.drawNews(data as DataNews)),
+      this.controller.getNews(e, (data) => this.view.drawNews(data as DataNews)),
     );
   }
 }
