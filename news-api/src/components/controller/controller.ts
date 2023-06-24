@@ -12,12 +12,12 @@ class AppController extends AppLoader {
   }
 
   public getNews(e: Event, callback: (data: Data) => void): void {
-    let target: Element = e.target as Element;
-    const newsContainer: Element = e.currentTarget as Element;
+    let target = e.target as HTMLElement;
+    const newsContainer = e.currentTarget as HTMLElement;
 
     while (target !== newsContainer) {
       if (target && target.classList.contains('sources__item')) {
-        const sourceId: string | null = target.getAttribute('data-source-id');
+        const sourceId = target.getAttribute('data-source-id');
 
         if (!sourceId) throw new Error(`${target} doesn't contains attribute data-source-id`);
 
@@ -37,7 +37,7 @@ class AppController extends AppLoader {
         return;
       }
 
-      target = target.parentNode as Element;
+      target = target.parentNode as HTMLElement;
     }
   }
 }
