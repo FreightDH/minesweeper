@@ -5,3 +5,13 @@
   -o-transform: skewX($num);
   transform: skewX($num);
 }
+
+@function rem($px) {
+  $result: math.div($px, 16) + rem;
+  @return $result;
+}
+
+@function em($px, $current: 16) {
+  $result: math.div($px, $current) + em;
+  @return $result;
+}

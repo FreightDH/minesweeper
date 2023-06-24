@@ -151,7 +151,7 @@
 
   &__content {
     position: relative;
-    font-size: 16px;
+    font-size: rem(16);
 
     @media (max-width: $mobileSmall) {
       font-size: rem(14);
