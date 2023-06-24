@@ -1,11 +1,11 @@
 import AppLoader from './appLoader';
-import { Data } from '../types';
+import { Data, Endpoint } from '../types';
 
 class AppController extends AppLoader {
   public getSources(callback: (data: Data) => void): void {
     super.getResp(
       {
-        endpoint: 'sources',
+        endpoint: Endpoint.sources,
       },
       callback,
     );
@@ -26,7 +26,7 @@ class AppController extends AppLoader {
 
           super.getResp(
             {
-              endpoint: 'everything',
+              endpoint: Endpoint.everything,
               options: {
                 sources: sourceId,
               },
