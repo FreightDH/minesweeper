@@ -3,7 +3,10 @@ import AppView from '../view/appView';
 import { Data, DataNews, DataSources } from '../types';
 
 class App {
-  constructor(public controller: AppController, public view: AppView) {
+  public controller;
+  public view;
+
+  constructor() {
     this.controller = new AppController();
     this.view = new AppView();
   }
