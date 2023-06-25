@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { Data, DataNews, DataSources, Endpoint } from '../types';
+import { Endpoint } from '../types';
 
 class AppController extends AppLoader {
   public getSources(callback: <T>(data: T) => void): void {

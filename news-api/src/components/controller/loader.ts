@@ -1,4 +1,4 @@
-import { Data, Endpoint } from '../types';
+import { Endpoint } from '../types';
 
 class Loader {
   constructor(private baseLink: string, private options: Record<string, string>) {
