@@ -1,7 +1,7 @@
 // ПРОВЕРКА ПОДДЕРЖКИ WEBP
 export function isWebp() {
   // Проверка поддержки webp
-  function testWebP(callback) {
+  function testWebP(callback: (support: boolean) => void): void {
     const webP = new Image();
     webP.onload = webP.onerror = () => {
       callback(webP.height === 2);
@@ -10,7 +10,7 @@ export function isWebp() {
       'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
   }
   // Добавление класса _webp или _no-webp для HTML
-  testWebP((support) => {
+  testWebP((support: boolean) => {
     const className = support === true ? 'webp' : 'no-webp';
     document.documentElement.classList.add(className);
   });
@@ -20,12 +20,12 @@ export function isWebp() {
 export let bodyLockStatus = true;
 
 export const bodyUnlock = (delay = 300) => {
-  const body = document.querySelector('body');
+  const body = document.body;
   if (bodyLockStatus) {
     const lockPadding = document.querySelectorAll('[data-lp]');
     setTimeout(() => {
       for (let index = 0; index < lockPadding.length; index++) {
-        const el = lockPadding[index];
+        const el = lockPadding[index] as HTMLElement;
         el.style.paddingRight = '0px';
       }
       body.style.paddingRight = '0px';
@@ -39,14 +39,16 @@ export const bodyUnlock = (delay = 300) => {
 };
 
 export const bodyLock = (delay = 300) => {
-  const body = document.querySelector('body');
+  const body = document.body;
   if (bodyLockStatus) {
     const lockPadding = document.querySelectorAll('[data-lp]');
+    const wrapperElement = document.querySelector('.wrapper') as HTMLElement;
+
     for (let index = 0; index < lockPadding.length; index++) {
-      const el = lockPadding[index];
-      el.style.paddingRight = `${window.innerWidth - document.querySelector('.wrapper').offsetWidth}px`;
+      const el = lockPadding[index] as HTMLElement;
+      el.style.paddingRight = `${window.innerWidth - wrapperElement.offsetWidth}px`;
     }
-    body.style.paddingRight = `${window.innerWidth - document.querySelector('.wrapper').offsetWidth}px`;
+    body.style.paddingRight = `${window.innerWidth - wrapperElement.offsetWidth}px`;
     document.documentElement.classList.add('lock');
 
     bodyLockStatus = false;
@@ -67,11 +69,11 @@ export const bodyLockToggle = (delay = 300) => {
 // ДРУГОЕ
 
 // ГЕНЕРАЦИЯ СЛУЧАЙНОГО ЧИСЛА, ВКЛЮЧАЯ MIN и MAX
-export const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+export const getRandomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 //----------------------------------------------------------------------
 
 // ПЕРЕМЕШИВАНИЕ МАССИВА
-export const shuffleArray = (array) => {
+export const shuffleArray = <T>(array: T[]): T[] => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
