@@ -20,8 +20,8 @@ global.app = {
 import { reset } from './config/gulp-tasks/reset.js';
 import { html } from './config/gulp-tasks/html.js';
 import { css } from './config/gulp-tasks/css.js';
-import { js } from './config/gulp-tasks/js.js';
-import { jsDev } from './config/gulp-tasks/js-dev.js';
+import { ts } from './config/gulp-tasks/ts.js';
+import { tsDev } from './config/gulp-tasks/ts-dev.js';
 import { images } from './config/gulp-tasks/images.js';
 import { ftp } from './config/gulp-tasks/ftp.js';
 import { zip } from './config/gulp-tasks/zip.js';
@@ -33,13 +33,13 @@ const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fontsStyle);
 // Основные задачи выполняются параллельно после обработки шрифтов
 const devTasks = gulp.parallel(fonts);
 // Основные задачи выполняются параллельно после обработки шрифтов
-const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images));
+const buildTasks = gulp.series(fonts, tsDev, ts, gulp.parallel(html, css, images));
 
 // Экспорт задач
 export { html };
 export { css };
-export { js };
-export { jsDev };
+export { ts };
+export { tsDev };
 export { images };
 export { fonts };
 export { sprite };

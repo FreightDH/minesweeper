@@ -49,7 +49,7 @@ const config = {
     ],
   },
   entry: {
-    app: `${paths.src}/js/app`,
+    app: `${paths.src}/ts/app`,
   },
   output: {
     path: `${paths.build}`,

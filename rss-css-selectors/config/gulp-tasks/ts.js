@@ -1,9 +1,9 @@
 import webpack from 'webpack-stream';
 import webPackConfig from '../webpack.prod.js';
 
-export const js = () => {
+export const ts = () => {
   return app.gulp
-    .src(app.path.src.js)
+    .src(app.path.src.ts)
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({

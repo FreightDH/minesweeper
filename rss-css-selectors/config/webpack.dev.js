@@ -41,7 +41,7 @@ const config = {
     minimize: false,
   },
   entry: {
-    app: `${paths.src}/js/app`,
+    app: `${paths.src}/ts/app`,
   },
   output: {
     path: `${paths.build}`,

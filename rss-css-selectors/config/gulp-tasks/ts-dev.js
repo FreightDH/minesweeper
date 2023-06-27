@@ -43,9 +43,9 @@ webPackConfigBeautify.output = {
   publicPath: '/',
 };
 
-export const jsDev = () => {
+export const tsDev = () => {
   return app.gulp
-    .src(app.path.src.js)
+    .src(app.path.src.ts)
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
