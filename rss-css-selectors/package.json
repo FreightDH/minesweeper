@@ -1,7 +1,7 @@
 {
-	"name": "template",
+	"name": "rss-css-selectors",
 	"version": "1.0.0",
-	"description": "Start template with Gulp and Webpack (Typescript)",
+	"description": "CSS Diner clone",
 	"author": "FreightDH",
 	"private": true,
 	"type": "module",

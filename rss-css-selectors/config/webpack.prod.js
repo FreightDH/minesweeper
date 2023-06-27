@@ -49,7 +49,7 @@ const config = {
     ],
   },
   entry: {
-    app: `${paths.src}/js/app.js`,
+    app: `${paths.src}/js/app`,
   },
   output: {
     path: `${paths.build}`,
@@ -115,7 +115,6 @@ const config = {
       {
         test: /\.ts$/i,
         use: 'ts-loader',
-        include: [`${paths.src}/ts`],
       },
     ],
   },
