@@ -5,7 +5,7 @@ class AppController extends AppLoader {
   public getSources(callback: <T>(data: T) => void): void {
     super.getResp(
       {
-        endpoint: Endpoint.sources,
+        endpoint: Endpoint.Sources,
       },
       callback,
     );
@@ -26,7 +26,7 @@ class AppController extends AppLoader {
 
           super.getResp(
             {
-              endpoint: Endpoint.everything,
+              endpoint: Endpoint.Everything,
               options: {
                 sources: sourceId,
               },

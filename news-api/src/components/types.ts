@@ -15,6 +15,6 @@ export type DataNews = {
 export type Data = DataSources | DataNews | undefined;
 
 export enum Endpoint {
-  sources = 'sourses',
-  everything = 'everything',
+  Sources = 'sourses',
+  Everything = 'everything',
 }
