@@ -3,8 +3,8 @@ import Sources from './sources/sources';
 import { DataSources, DataNews } from '../types';
 
 class AppView {
-  public news;
-  public sources;
+  public news: News;
+  public sources: Sources;
 
   constructor() {
     this.news = new News();
