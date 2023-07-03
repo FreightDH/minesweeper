@@ -3,7 +3,7 @@ import { Article } from '../../types';
 class News {
   public draw(data: Article[]): void {
     const MAX_LENGTH = 10;
-    const news = data.length > MAX_LENGTH ? data.slice(0, 10) : data;
+    const news = data.length > MAX_LENGTH ? data.slice(0, MAX_LENGTH) : data;
     const fragment = document.createDocumentFragment();
     const newsItemTemp: HTMLTemplateElement = document.querySelector('#news__item--template')!;
 
@@ -22,7 +22,7 @@ class News {
 
       newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
       newsAuthor.textContent = item.author || item.source.name;
-      newsDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
+      newsDate.textContent = item.publishedAt.slice(0, MAX_LENGTH).split('-').reverse().join('-');
       newsTitle.textContent = item.title;
       newsSource.textContent = item.source.name;
       newsContent.textContent = item.description;
