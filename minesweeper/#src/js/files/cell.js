@@ -1,15 +1,6 @@
-import {
-  matrix,
-  width,
-  height,
-  bombsCount,
-  cellsToWin,
-  setBombs,
-  recordsArray,
-  volume,
-} from "./init.js";
+import { matrix, width, height, bombsCount, cellsToWin, setBombs, recordsArray, volume } from './init.js';
 
-import songs from "./sounds.js";
+import songs from './sounds.js';
 
 let firstClick = true;
 let isLost = false;
@@ -17,11 +8,10 @@ let isWin = false;
 let timerStart = false;
 let currentCountCells = 0;
 let clicksCount = 0;
-let timerDisplay = "";
-let bombsCountDisplay = "";
+let timerDisplay = '';
+let bombsCountDisplay = '';
 
-const sadFaceTag =
-  '<button><img src="./img/sad-face.png" alt="smile"></button>';
+const sadFaceTag = '<button><img src="./img/sad-face.png" alt="smile"></button>';
 const flagTag = '<img src="./img/flag.png" alt="flag">';
 const bombTag = '<img src="./img/bomb.png" alt="bomb">';
 
@@ -46,14 +36,10 @@ function getAllNeighbours(coordinates) {
   if (y < height - 1 && matrix[x][y + 1]) neighbours.push(matrix[x][y + 1]);
 
   // МИНЫ ПО УГЛАМ
-  if (x > 0 && y > 0 && matrix[x - 1][y - 1])
-    neighbours.push(matrix[x - 1][y - 1]);
-  if (x > 0 && y <= height - 1 && matrix[x - 1][y + 1])
-    neighbours.push(matrix[x - 1][y + 1]);
-  if (x < width - 1 && y > 0 && matrix[x + 1][y - 1])
-    neighbours.push(matrix[x + 1][y - 1]);
-  if (x < width - 1 && y < height - 1 && matrix[x + 1][y + 1])
-    neighbours.push(matrix[x + 1][y + 1]);
+  if (x > 0 && y > 0 && matrix[x - 1][y - 1]) neighbours.push(matrix[x - 1][y - 1]);
+  if (x > 0 && y <= height - 1 && matrix[x - 1][y + 1]) neighbours.push(matrix[x - 1][y + 1]);
+  if (x < width - 1 && y > 0 && matrix[x + 1][y - 1]) neighbours.push(matrix[x + 1][y - 1]);
+  if (x < width - 1 && y < height - 1 && matrix[x + 1][y + 1]) neighbours.push(matrix[x + 1][y + 1]);
 
   return neighbours;
 }
@@ -67,12 +53,12 @@ function startTimer() {
 }
 
 function showResult(status) {
-  const result = document.querySelector(".game__result");
-  const resultStatus = document.querySelector(".result__status");
-  const resultTime = document.querySelector(".result__time");
-  const resultClicks = document.querySelector(".result__clicks");
+  const result = document.querySelector('.game__result');
+  const resultStatus = document.querySelector('.result__status');
+  const resultTime = document.querySelector('.result__time');
+  const resultClicks = document.querySelector('.result__clicks');
 
-  result.classList.add("show");
+  result.classList.add('show');
   resultStatus.textContent = `${status}!`;
   resultStatus.classList.add(`${status.toLowerCase()}`);
   resultTime.textContent = `Time: ${timerDisplay.textContent} sec`;
@@ -86,8 +72,8 @@ function playAudio(type) {
 }
 
 export function resetServiceValues() {
-  timerDisplay = document.querySelector(".header__timer");
-  bombsCountDisplay = document.querySelector(".header__bombs");
+  timerDisplay = document.querySelector('.header__timer');
+  bombsCountDisplay = document.querySelector('.header__bombs');
   isWin = false;
   isLost = false;
   clicksCount = 0;
@@ -112,15 +98,15 @@ class Cell {
         this.isFlagged = isFlagged;
         this.cell.innerHTML = flagTag;
         bombsCountDisplay.textContent--;
-        playAudio("flag");
+        playAudio('flag');
       } else {
         return;
       }
     } else {
       this.isFlagged = isFlagged;
-      this.cell.innerHTML = "";
+      this.cell.innerHTML = '';
       bombsCountDisplay.textContent++;
-      playAudio("flag-off");
+      playAudio('flag-off');
     }
   }
 
@@ -146,18 +132,18 @@ class Cell {
 
   open() {
     this.isOpen = true;
-    this.cell.classList.add("opened");
+    this.cell.classList.add('opened');
     this.showValue();
   }
 
   openBomb() {
     this.isOpen = true;
-    this.cell.classList.add("opened");
+    this.cell.classList.add('opened');
     this.cell.innerHTML = bombTag;
   }
 
   showValue() {
-    this.cell.innerHTML = this.value ? this.value : "";
+    this.cell.innerHTML = this.value ? this.value : '';
   }
 
   onClick() {
@@ -175,7 +161,7 @@ class Cell {
     }
 
     if (this.isBomb) {
-      const restartButton = document.querySelector(".header__restart");
+      const restartButton = document.querySelector('.header__restart');
       restartButton.innerHTML = sadFaceTag;
 
       const resultTime = timerDisplay.textContent;
@@ -183,14 +169,14 @@ class Cell {
         recordsArray.shift();
       }
       recordsArray.push(`Lose (${resultTime} sec, ${clicksCount} clicks)`);
-      localStorage.setItem("records", recordsArray.join(" - "));
+      localStorage.setItem('records', recordsArray.join(' - '));
 
-      this.cell.classList.add("lose");
+      this.cell.classList.add('lose');
       this.openBomb();
 
       showAllBombs();
-      showResult("Lose");
-      playAudio("lose");
+      showResult('Lose');
+      playAudio('lose');
 
       isLost = true;
       window.clearInterval(window.timer);
@@ -217,12 +203,12 @@ class Cell {
         recordsArray.shift();
       }
       recordsArray.push(`Win (${resultTime} sec, ${clicksCount} clicks)`);
-      localStorage.setItem("records", recordsArray.join(" - "));
+      localStorage.setItem('records', recordsArray.join(' - '));
 
       isWin = true;
       showAllBombs();
-      showResult("Win");
-      playAudio("win");
+      showResult('Win');
+      playAudio('win');
       window.clearInterval(window.timer);
     }
 
@@ -230,14 +216,14 @@ class Cell {
   }
 
   createCellMarkup() {
-    const cell = document.createElement("div");
-    cell.classList.add("field__cell");
+    const cell = document.createElement('div');
+    cell.classList.add('field__cell');
 
-    if (width === 25) cell.classList.add("small");
+    if (width === 25) cell.classList.add('small');
 
     this.cell = cell;
 
-    this.cell.addEventListener("contextmenu", (event) => {
+    this.cell.addEventListener('contextmenu', (event) => {
       event.preventDefault();
       if (isLost || isWin) return;
       if (!timerStart) startTimer();
@@ -245,9 +231,8 @@ class Cell {
       this.isFlagged ? this.setFlag(false) : this.setFlag(true);
     });
 
-    this.cell.addEventListener("click", () => {
-      if (!this.isOpen && !this.isFlagged && !this.isBomb && !isLost && !isWin)
-        playAudio("click");
+    this.cell.addEventListener('click', () => {
+      if (!this.isOpen && !this.isFlagged && !this.isBomb && !isLost && !isWin) playAudio('click');
 
       clicksCount++;
       this.onClick();
