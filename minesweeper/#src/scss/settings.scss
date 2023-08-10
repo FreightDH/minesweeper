@@ -49,20 +49,9 @@
     }
   }
 
-  &__difficulty {
-  }
-
   &__bombs {
     width: 100%;
     text-align: center;
-    // padding: 10px 0;
-  }
-
-  &__records {
-    // padding: 0px 0px 10px 0px;
-  }
-
-  &__theme {
   }
 
   &__volume {
@@ -72,6 +61,7 @@
     }
   }
 }
+
 .difficulty {
   &__option {
     opacity: 0.6;
@@ -85,6 +75,7 @@
     }
   }
 }
+
 .theme {
   &__option {
     opacity: 0.6;

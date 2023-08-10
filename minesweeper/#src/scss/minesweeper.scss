@@ -78,9 +78,6 @@
   }
 }
 .header {
-  &__bombs-count {
-  }
-
   &__restart {
     width: 40px;
     height: 40px;
@@ -113,9 +110,6 @@
       }
     }
   }
-
-  &__timer {
-  }
 }
 
 .display {
@@ -132,7 +126,7 @@
   background-color: #000;
 
   color: red;
-  font-family: "Pixel";
+  font-family: 'Pixel';
   font-size: rem(20);
   line-height: 0;
   letter-spacing: 1px;
@@ -180,7 +174,7 @@
 
     position: relative;
 
-    font-family: "Minesweeper";
+    font-family: 'Minesweeper';
 
     cursor: pointer;
 
@@ -227,7 +221,7 @@
   &__body {
     padding: 10px;
 
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-size: 18px;
 
     border: 2px solid #515151;
@@ -249,9 +243,6 @@
 
   &__time {
     padding: 5px 0;
-  }
-
-  &__clicks {
   }
 }
 //----------------------------------------------------------------------
